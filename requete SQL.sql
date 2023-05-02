@@ -256,15 +256,35 @@ AND film.id_film = 1
 
 
 --H. Liste des personnes qui sont à la fois acteurs et réalisateurs
-
+SELECT film.titre, film.anneeSortie
+FROM personne, acteur, realisateur
+WHERE personne.id_personne = acteur.id_personne
+AND acteur.id_personne = realisateur.id_personne
 
 --I. Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)
-
+SELECT film.titre, film.anneeSortie
+FROM film
+WHERE YEAR(CURDATE())-film.anneeSortie <= 5
+ORDER BY film.anneeSortie DESC
 
 --J. Nombre d’hommes et de femmes parmi les acteurs
+SELECT personne.sexe AS 'Sexe', COUNT(personne.sexe) AS 'Nombre'
+FROM acteur, personne
+WHERE acteur.id_personne = personne.id_personne
+GROUP BY personne.sexe
 
+
+-- La condition HAVING en SQL est presque similaire à WHERE à la seule différence que HAVING permet de filtrer en utilisant des fonctions telles que SUM(), COUNT(), AVG(), MIN() ou MAX().
 
 --K. Liste des acteurs ayant plus de 50 ans (âge révolu et non révolu)
-
+SELECT personne.prenom, personne.nom, personne.dateNaissance, (TIMESTAMPDIFF(YEAR, personne.dateNaissance, CURRENT_DATE)) AS age
+FROM acteur, personne
+WHERE acteur.id_personne = personne.id_personne
+HAVING age >= 50
 
 --L. Acteurs ayant joué dans 3 films ou plus
+SELECT jouer.id_acteur, COUNT(jouer.id_film) AS film_joue
+FROM jouer, acteur
+WHERE jouer.id_acteur = acteur.id_acteur
+GROUP BY jouer.id_acteur
+HAVING film_joue <= 3
