@@ -215,10 +215,17 @@ WHERE duree < '136'
 ORDER BY duree DESC
 
 --C. Liste des films d’un réalisateur (en précisant l’année de sortie)
-
+SELECT nom, titre, anneeSortie
+FROM film
+INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
+INNER JOIN personne ON realisateur.id_realisateur = personne.id_personne
 
 --D. Nombre de films par genre (classés dans l’ordre décroissant)
-
+SELECT COUNT(film.id_film) AS 'Nombre de films', nom_genre AS 'Genre'
+FROM film
+INNER JOIN categoriser ON film.id_film = categoriser.id_film
+INNER JOIN genre ON categoriser.id_genre = genre.id_genre
+GROUP BY nom_genre
 
 --E. Nombre de films par réalisateur (classés dans l’ordre décroissant)
 
