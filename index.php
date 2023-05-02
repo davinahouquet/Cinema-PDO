@@ -1,4 +1,3 @@
-<!-- Afficher liste des films -->
 <!-- Afficher filmographie d'un réalisateur -->
 <!-- Afficher casting d'un film -->
 
@@ -9,5 +8,16 @@ try{
 }
 catch(Exception $e) {
     die('Erreur : ' . $e->getMessage());
+}
+
+//Afficher liste des films
+
+$sqlQuery = 'SELECT * FROM film';
+$filmStatement = $db->prepare($sqlQuery);
+$filmStatement->execute();
+$films = $filmStatement->fetchAll();
+
+foreach ($films as $film){
+    echo "<p>".$film['titre']." ".$film['anneeSortie']."</p>";
 }
 ?>
