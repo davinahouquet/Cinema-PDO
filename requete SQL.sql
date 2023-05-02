@@ -199,3 +199,46 @@ INSERT INTO jouer VALUES('15', '21', '20')
 INSERT INTO jouer VALUES('17', '23', '23')
 INSERT INTO jouer VALUES('20', '24', '26')
 INSERT INTO jouer VALUES('21', '24', '27')
+
+--Requêtes --------------------------------------------------------------------
+
+--A. Informations d’un film (id_film) : titre, année, durée (au format HH:MM) et réalisateur
+SELECT titre, anneeSortie, duree, nom, prenom
+FROM film 
+INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
+INNER JOIN personne ON realisateur.id_realisateur = personne.id_personne
+
+--B. Liste des films dont la durée excède 2h15 classés par durée (du + long au + court)
+SELECT titre, duree
+FROM film
+WHERE duree < '136'
+ORDER BY duree DESC
+
+--C. Liste des films d’un réalisateur (en précisant l’année de sortie)
+
+
+--D. Nombre de films par genre (classés dans l’ordre décroissant)
+
+
+--E. Nombre de films par réalisateur (classés dans l’ordre décroissant)
+
+
+--F. Casting d’un film en particulier (id_film) : nom, prénom des acteurs + sexe
+
+
+--G. Films tournés par un acteur en particulier (id_acteur) avec leur rôle et l’année de sortie (du film le plus récent au plus ancien)
+
+
+--H. Liste des personnes qui sont à la fois acteurs et réalisateurs
+
+
+--I. Liste des films qui ont moins de 5 ans (classés du plus récent au plus ancien)
+
+
+--J. Nombre d’hommes et de femmes parmi les acteurs
+
+
+--K. Liste des acteurs ayant plus de 50 ans (âge révolu et non révolu)
+
+
+--L. Acteurs ayant joué dans 3 films ou plus
