@@ -58,3 +58,15 @@ INSERT INTO film VALUES('18', 'Wonder Woman 1984', '2020', '151', '', '2.1', '',
 INSERT INTO film VALUES('19', 'Lost in Translation', '2003', '102', '', '4.5', '', '7')
 INSERT INTO film VALUES('20', 'Marie-Antoinette', '2006', '123', '', '4.1', '', '7')
 INSERT INTO film VALUES('21', 'Virgin Suicides', '2000', '97', '', '4.4', '', '7')
+
+--genre
+INSERT INTO genre VALUES('1', 'Drame')
+INSERT INTO genre VALUES('2', 'Horreur')
+INSERT INTO genre VALUES('3', 'Action')
+INSERT INTO genre VALUES('4', 'Thriller')
+INSERT INTO genre VALUES('5', 'Super-héros')
+INSERT INTO genre VALUES('6', 'Anticipation')
+INSERT INTO genre VALUES('7', 'Comédie')
+INSERT INTO genre VALUES('8', 'Romance')
+INSERT INTO genre VALUES('9', 'Science-fiction')
+INSERT INTO genre VALUES('10', 'Fantastique')
