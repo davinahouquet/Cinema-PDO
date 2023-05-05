@@ -203,10 +203,13 @@ INSERT INTO jouer VALUES('21', '24', '27')
 --Requêtes --------------------------------------------------------------------
 
 --A. Informations d’un film (id_film) : titre, année, durée (au format HH:MM) et réalisateur
-SELECT titre, anneeSortie, duree, nom, prenom
+SELECT titre, anneeSortie,TIME_FORMAT(SEC_TO_TIME(duree*60),'%H:%i') AS duree , nom, prenom
 FROM film 
 INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
 INNER JOIN personne ON realisateur.id_realisateur = personne.id_personne
+
+-- Correction : 
+TIME_FORMAT(SEC_TO_TIME(duree*60),'%H:%i') AS duree 
 
 --B. Liste des films dont la durée excède 2h15 classés par durée (du + long au + court)
 SELECT titre, duree
