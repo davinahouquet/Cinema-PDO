@@ -20,15 +20,15 @@
     <section>
         <nav class="navigation">
             <div class="logo-title">
-                <img src="Cinema-MVC/public/img/Logo.png">
-                <p>Mooviz</p>
+            <a href="#"><img src="Cinema-MVC/public/img/Logo.png"></a>
+                <p><a href="#">Mooviz</a></p>
             </div>
             <ul>
-                <a href="Film/viewFilm.php"><li>MOVIES</li></a>
-                <a href="viewGenre.php"><li>GENRES</li></a>
-                <a href="viewRole.php"><li>ROLES</li></a>
-                <a href="viewActor.php"><li>ACTORS</li></a>
-                <a href="viewDirector.php"><li>DIRECTORS</li></a>
+                <li><a href="Film/viewFilm.php">MOVIES</a></li>
+                <li><a href="Genre/viewGenre.php">GENRES</a></li>
+                <li><a href="Role/viewRole.php">ROLES</a></li>
+                <li><a href="Actor/viewActor.php">ACTORS</a></li>
+                <li><a href="Director/viewDirector.php">DIRECTORS</a></li>
                 <li>ADD INFOS
                     <select>
                         <option></option>
@@ -48,7 +48,7 @@
 </header>
 <body>
 
-    <?= $contenu ?>
+    <?= $contenu //Variable qui stocke les données entre ob_start et ob_clean dans les view?> 
 
 </body>
 </html>

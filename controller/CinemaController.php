@@ -6,16 +6,42 @@ use Model\Connect; //On remarquera ici l'utilisation du "use" pour accéder à l
 class CinemaController {
 
     
-        // Lister les films
+// Lister les films
 
     public function listFilms(){
 
         $pdo = Connect::seConnecter(); //On se connecte
         $requete = $pdo->query(" 
-            SELECT titre, annee_sortie
-            FROM film
+            SELECT film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
+            FROM film, realisateur, personne
+            WHERE film.id_realisateur = realisateur.id_realisateur
+            AND realisateur.id_personne = personne.id_personne
         "); //On exécute la requête de notre choix
+        $requete->execute();
+        require ("view/Film/viewFilm.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
+    }
+    
+    public function detailFilm($id){
 
-        require "view/listFilms.php"; //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
+        $pdo = Connect::seConnecter(); //On se connecte
+        $requete1 = $pdo->prepare(" 
+            SELECT * FROM film WHERE id_film = :id
+        "); //On exécute la requête de notre choix
+        $requete1->execute(["id" => $id]);
+        require ("view/Film/viewdetailFilm.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
     }
 }
+
+
+
+
+//Listes les genres
+
+
+//Lister les rôles
+
+
+//Lister les acteurs
+
+
+//Lister les rélisateurs

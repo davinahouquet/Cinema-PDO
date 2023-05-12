@@ -4,21 +4,26 @@ ob_start();
 
 ?>
 
-<p>There are <?= $requete->rowCount() ?> movies</p>
-
 <table>
     <thead>
         <tr>
             <th>TITLE</th>
-           
+            <th>RELEASE DATE</th>
+            <th>Duration</th>
+            <th>Synopsis</th>
+            <th>Note</th>
+            <th>Director</th>
         </tr>
     </thead>
     <tbody>
         <?php
-            foreach($requete->fetchAll() as $film){ ?>
+            foreach($requete1->fetchAll() as $film){ ?>
                 <tr>
                     <td><?= $film["titre"] ?></td>
-                    
+                    <td><?= $film["anneeSortie"]?></td>
+                    <td><?= $film["duree"]?></td>
+                    <td><?= $film["note"]?></td>
+                    <td><?= $film['id_realisateur'] ?></td>
                 </tr>
           <?php  } ?>
     </tbody>
