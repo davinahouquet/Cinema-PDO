@@ -20,7 +20,6 @@
     <section>
         <nav class="navigation">
             <div class="logo-title">
-            <a href="#"><img src="Cinema-MVC/public/img/Logo.png"></a>
                 <p><a href="#">Mooviz</a></p>
             </div>
             <ul>
@@ -44,7 +43,7 @@
         </nav>
     </section>
 
-    <script src="/public/js/script.js"></script>
+    <script src="public/js/script.js"></script>
 </header>
 <body>
 
