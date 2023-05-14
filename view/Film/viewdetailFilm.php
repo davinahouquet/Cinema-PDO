@@ -2,7 +2,7 @@
 
 ob_start();
 
-$detailFilm = $requeteFilm->fetch();
+$detailFilm = $requeteFilm->fetchAll();
 ?>
 
 <table>
@@ -20,12 +20,12 @@ $detailFilm = $requeteFilm->fetch();
         <?php
             foreach($detailFilm as $film){ ?>
                 <tr>
-                    <a href="index.php?action=detailsFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a>
+                    <td><?= $film["titre"] ?></td>
                     <td><?= $film["anneeSortie"]?></td>
                     <td><?= $film["duree"]?></td>
                     <td><?= $film["note"]?></td>
-                    <td><?= $film['id_realisateur'] ?></td>
-                    <td><?= $film['synopsis'] ?></td>
+                    <td><?= $film["prenom"]." ".$film["nom"] ?></td>
+                    <td><?= $film["synopsis"] ?></td>
                 </tr>
           <?php  } ?>
     </tbody>
@@ -33,7 +33,7 @@ $detailFilm = $requeteFilm->fetch();
 
 
 <?php
-$titre = $film["titre"];
+// $titre = $detailFilm["titre"];
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php
