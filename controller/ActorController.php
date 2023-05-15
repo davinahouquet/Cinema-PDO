@@ -16,4 +16,16 @@ class ActorController {
         $requeteActor->execute();
         require ("view/Actor/viewActor.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
     }
+
+    //Page ajout acteur
+    public function getAddActor(){
+        $pdo = Connect::seConnecter(); //On se connecte
+        $requeteGetAddActor = $pdo->query(" 
+        SELECT prenom, nom
+            FROM acteur a
+            INNER JOIN personne ON personne.id_personne = a.id_personne
+        "); //On exécute la requête de notre choix
+        $requeteGetAddActor->execute();
+        require ("view/Actor/viewAddActor.php");
+    }
 }

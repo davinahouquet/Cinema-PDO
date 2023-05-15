@@ -15,4 +15,15 @@ class RoleController {
         $requeteRole->execute();
         require ("view/Role/viewRole.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
     }
+
+    // Aller à la page d'ajout d'un rôle
+    public function getAddRole(){
+        $pdo = Connect::seConnecter(); //On se connecte
+        $requeteGetAddRole = $pdo->query(" 
+        SELECT role
+        FROM role
+        "); //On exécute la requête de notre choix
+        $requeteGetAddRole->execute();
+        require ("view/Role/viewAddRole.php");
+    }
 }

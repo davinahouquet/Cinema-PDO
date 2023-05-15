@@ -10,7 +10,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* Barre de navigation */
+/*---------- Barre de navigation ----------*/
 nav{
     display: flex;
     align-items: center;
@@ -40,4 +40,83 @@ a{
 
 option{
     color: var(--dark-blue);
+}
+
+/*---------- Page d'ajout d'un film ----------*/
+
+.addFilm{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+input{
+    width: 200px;
+    height: 45px;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.submit{
+    color: var(--dark-blue);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.checked {
+    color: orange;
+}
+
+.stars-container{
+    display: flex;
+    flex-direction: row;
+}
+
+span{
+    margin: 5px;
+}
+
+.form-input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+/* ---------- Page d'ajout d'un genre ---------- */
+.addGenre{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
+}
+
+/* ---------- Page d'ajout d'un acteur ---------- */
+.addActor{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
+}
+
+/* ---------- Page d'ajout d'un réalisateur ---------- */
+.addDirector{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
 }

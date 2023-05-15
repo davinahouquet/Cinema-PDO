@@ -21,6 +21,7 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
     
     switch ($_GET["action"]){
 
+        case "landingPage" : $ctrlCinema->landingPage(); break;
         case "listFilms" : $ctrlCinema->listFilms(); break;
         case "detailFilm" : $ctrlCinema->detailFilm($id); break;
         case "listGenres" : $ctrlGenre->listGenres();break;
@@ -28,5 +29,11 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         case "listRoles" : $ctrlRole->listRoles();break;
         case "listActors" : $ctrlActor->listActors(); break;
         case "listDirectors" : $ctrlDirector->listDirectors(); break;
+
+        case "getAddFilm" : $ctrlCinema->getAddFilm(); break;
+        case "getAddGenre" : $ctrlGenre->getAddGenre(); break;
+        case "getAddRole" : $ctrlRole->getAddRole();break;
+        case "getAddActor" : $ctrlActor->getAddActor(); break;
+        case "getAddDirector" : $ctrlDirector->getAddDirector(); break;
     }
 }

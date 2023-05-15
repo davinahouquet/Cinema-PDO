@@ -32,6 +32,17 @@ class GenreController {
         $requeteFilm->execute(["id" => $id]);
         require("view/Genre/viewDetailsGenre.php");
     }
+
+    //Aller à la page d'ajout d'un genre
+    public function getAddGenre(){
+        $pdo = Connect::seConnecter(); 
+        $requeteGetAddGenre = $pdo->query("SELECT f.titre
+        FROM categoriser c, film f, genre g
+        WHERE c.id_film = f.id_film
+        AND c.id_genre = g.id_genre");
+        $requeteGetAddGenre->execute();
+        require "view/Genre/viewAddGenre.php";
+    }
 }
 
 
