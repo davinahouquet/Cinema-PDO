@@ -30,26 +30,14 @@
                 <li><a href="http://localhost/Cinema-MVC/index.php?action=listActors">ACTORS</a></li>
                 <li><a href="http://localhost/Cinema-MVC/index.php?action=listDirectors">DIRECTORS</a></li>
                 <li>ADD INFOS
-                    <select>
+                    <select onchange="location = this.value;">
                         <option></option>
-                        <option>
-                            <a href="http://localhost/Cinema-MVC/index.php?action=getAddFilm">ADD MOVIES</a>
-                        </option>
-                        <option>
-                            <a href="http://localhost/Cinema-MVC/index.php?action=getAddFilm">ADD GENRES</a>
-                        </option>
-                        <option>
-                            <a href="http://localhost/Cinema-MVC/index.php?action=getAddRole">ADD ROLES</a>
-                        </option>
-                        <option>
-                            <a href="#">ADD ACTORS</a>
-                        </option>
-                        <option>
-                            <a href="#">ADD DIRECTORS</a>
-                        </option>
-                        <option>
-                            <a href="#">ADD CASTING</a>
-                        </option>
+                        <option value="http://localhost/Cinema-MVC/index.php?action=getAddFilm">ADD MOVIES</option>
+                        <option value="http://localhost/Cinema-MVC/index.php?action=getAddFilm">ADD GENRES</option>
+                        <option value="http://localhost/Cinema-MVC/index.php?action=getAddRole">ADD ROLES</option>
+                        <option value="http://localhost/Cinema-MVC/index.php?action=getAddActor">ADD ACTORS</option>
+                        <option value="http://localhost/Cinema-MVC/index.php?action=getAddDirector">ADD DIRECTORS</option>
+                        <option value="#">ADD CASTING</option>
                     </select>
                 </li>
             </ul>
