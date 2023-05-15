@@ -6,9 +6,9 @@ use Model\Connect; //On remarquera ici l'utilisation du "use" pour accéder à l
 class CinemaController {
 
     //Retour à la page d'accueil
-    // public function landingPage(){
-    //    require "view/LandingPage/viewLandingPage.php";
-    // }
+    public function landingPage(){
+       require "view/LandingPage/viewLandingPage.php";
+    }
 
     // Lister les films
     public function listFilms(){

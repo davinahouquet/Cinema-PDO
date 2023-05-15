@@ -23,11 +23,11 @@
                 <p><a href="#">Mooviz</a></p>
             </div>
             <ul class="navigation">
-                <li><a href="Film/viewFilm.php">MOVIES</a></li>
-                <li><a href="Genre/viewGenre.php">GENRES</a></li>
-                <li><a href="Role/viewRole.php">ROLES</a></li>
-                <li><a href="Actor/viewActor.php">ACTORS</a></li>
-                <li><a href="Director/viewDirector.php">DIRECTORS</a></li>
+                <li><a href="http://localhost/Cinema-MVC/index.php?action=listFilms">MOVIES</a></li>
+                <li><a href="http://localhost/Cinema-MVC/index.php?action=listGenres">GENRES</a></li>
+                <li><a href="http://localhost/Cinema-MVC/index.php?action=listRoles">ROLES</a></li>
+                <li><a href="http://localhost/Cinema-MVC/index.php?action=listActors">ACTORS</a></li>
+                <li><a href="http://localhost/Cinema-MVC/index.php?action=listDirectors">DIRECTORS</a></li>
                 <li>ADD INFOS
                     <select>
                         <option></option>
