@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="http://localhost/Cinema-MVC/public/css/style.css">
     <title>Cinema/<?= $titre ?> </title>
 </head>
 <header>
@@ -22,7 +22,7 @@
             <div class="logo-title">
                 <p><a href="#">Mooviz</a></p>
             </div>
-            <ul>
+            <ul class="navigation">
                 <li><a href="Film/viewFilm.php">MOVIES</a></li>
                 <li><a href="Genre/viewGenre.php">GENRES</a></li>
                 <li><a href="Role/viewRole.php">ROLES</a></li>
@@ -43,11 +43,14 @@
         </nav>
     </section>
 
-    <script src="public/js/script.js"></script>
 </header>
 <body>
-
-    <?= $contenu //Variable qui stocke les données entre ob_start et ob_clean dans les view?> 
-
+    
+    <main>
+        <?= $contenu ?>
+    </main>
+    
+    
+    <script src="public/js/script.js"></script>
 </body>
 </html>

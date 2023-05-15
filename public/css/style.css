@@ -1,5 +1,43 @@
-
+:root{
+    --dark-blue: #183062;
+}
 
 *{
-    background: linear-gradient(#183062 #000000);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Barre de navigation */
+nav{
+    display: flex;
+    align-items: center;
+}
+
+body{
+    background: linear-gradient(to left top, var(--dark-blue), #000000);
+    background-attachment: fixed;
+}
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: white;
+}
+
+li{
+    padding: 15px;
+    list-style-type: none;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+option{
+    color: var(--dark-blue);
 }
