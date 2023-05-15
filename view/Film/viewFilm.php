@@ -5,12 +5,11 @@ ob_start();
 ?>
 
 <p>There are <?= $requete->rowCount() ?> movies</p>
-
+<button><a href="http://localhost/Cinema-MVC/index.php?action=getAddFilm">Add Film</a></button>
 <table>
     <thead>
         <tr>
             <th>TITLE</th>
-           
         </tr>
     </thead>
     <tbody>

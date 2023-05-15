@@ -1,6 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteActor->rowCount() ?> actors</p>
+<button><a href="http://localhost/Cinema-MVC/index.php?action=getAddActor">Add Actor</a></button>
 
 <table>
     <thead>

@@ -1,6 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteGenre->rowCount() ?> genres</p>
+<button><a href="http://localhost/Cinema-MVC/index.php?action=getAddGenre">Add Genre</a></button>
 
 <table>
     <thead>
