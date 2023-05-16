@@ -8,7 +8,7 @@ class GenreController {
     //Lister les genres
     public function listGenres(){
         $pdo = Connect::seConnecter();
-        $requeteGenre = $pdo->query("SELECT nom_genre FROM genre");
+        $requeteGenre = $pdo->query("SELECT genre.id_genre, genre.nom_genre FROM genre");
         $requeteGenre->execute();
         require "view/Genre/viewGenre.php";
     }
@@ -16,13 +16,14 @@ class GenreController {
     //Afficher les détails d'un genre (films reliés)
     public function detailsGenre($id){
         $pdo = Connect::seConnecter(); 
-        $requeteDetailsGenre = $pdo->prepare("SELECT f.titre
+        $requeteDetailsGenre = $pdo->prepare("SELECT f.titre, nom_genre
         FROM categoriser c, film f, genre g
         WHERE c.id_film = f.id_film
         AND c.id_genre = g.id_genre
-        AND g.id_genre = :id");
+        AND g.id_genre = :id
+        ");
         $requeteDetailsGenre->execute(["id"=> $id]);
-        require "view/Genre/viewDetailsGenre.php";
+        require "view/Genre/viewdetailsGenre.php";
 
         $requeteFilm = $pdo->prepare("SELECT f.titre
                         FROM categoriser c, film f, genre g
@@ -30,7 +31,7 @@ class GenreController {
                         AND c.id_genre = g.id_genre
                         AND g.id_genre = :id");
         $requeteFilm->execute(["id" => $id]);
-        require("view/Genre/viewDetailsGenre.php");
+        require("view/Genre/viewdetailsGenre.php");
     }
 
     //Aller à la page d'ajout d'un genre

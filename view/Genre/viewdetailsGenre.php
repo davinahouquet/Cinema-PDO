@@ -6,19 +6,19 @@ ob_start();
 
 <!-- Affichage des détails d'un genre -->
 <div>
-        <?php
-            $genre = $requeteDetailsGenre->fetchAll();
-        ?>
+    <?php
+        $genre = $requeteDetailsGenre->fetchAll();
+    ?>
         <h2><?= $genre["nom_genre"] ?></h2>
-        <h3>LISTE DES FILMS QUI APPARTIENT À CE GENRE</h3>
-        <?php
-            foreach($requete->fetchAll() as $film){
-        ?>
-            <p><a href="#"><?= $film["titre"] ?></a></p>
-        <?php        
-            }
-        ?>
-    </div>
+        <h3>Movies related : </h3>
+    <?php
+        foreach($requeteFilm->fetchAll() as $film){
+    ?>
+        <p><?= $film["titre"] ?></p>
+    <?php        
+         }
+    ?>
+</div>
 
 
 <?php

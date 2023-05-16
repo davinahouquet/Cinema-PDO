@@ -1,7 +1,9 @@
 <?php ob_start(); ?>
+<div class="landing-page-title">
+    <h1>Movie night? Think about us</h1>
+    <h2>Infos about 20 movies with some clicks</h2>
+</div>
 
-<h1>Movie night? Think about us</h1>
-<h2>Infos about 20 movies with some clicks</h2>
 <?php
 $titre = "Landing Page";
 $titre_secondaire = "Landing Page";

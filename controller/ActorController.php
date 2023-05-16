@@ -28,4 +28,34 @@ class ActorController {
         $requeteGetAddActor->execute();
         require ("view/Actor/viewAddActor.php");
     }
+
+    // Fonction d'ajout d'un acteur
+    public function addActor(){
+        if(isset($_POST["submitActor"])){
+
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissance = filter_input(INPUT_POST, "date_naissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($prenom && $nom && $sexe && $dateNaissance){
+                $pdo = Connect::seConnecter();
+                $requetePersonne = $pdo->prepare("INSERT INTO personne (prenom, nom, sexe, dateNaissance)
+                                          VALUES (:prenom, :nom, :sexe, :dateNaissance)");
+                $requetePersonne->execute([
+                    'prenom' => $prenom,
+                    'nom' => $nom,
+                    'sexe' => $sexe,
+                    'dateNaissance' => $dateNaissance
+                ]);
+
+                $idLast = $pdo->lastInsertId();
+                $requeteActeur = $pdo->prepare("INSERT INTO acteur (id_personne)
+                                                     VALUES (:idLast)");
+                $requeteActeur->execute(['idLast' => $idLast]);
+
+            }
+        }
+        require("view/Accueil/viewAccueil.php");
+    }
 }

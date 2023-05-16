@@ -5,7 +5,7 @@ use Model\Connect; //On remarquera ici l'utilisation du "use" pour accéder à l
 
 class DirectorController {
 
-    // Lister les rôles
+    // Lister les réalisateurs
     public function listDirectors(){
         $pdo = Connect::seConnecter(); //On se connecte
         $requeteDirector = $pdo->query(" 

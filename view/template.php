@@ -33,7 +33,7 @@
                     <select onchange="location = this.value;">
                         <option></option>
                         <option value="http://localhost/Cinema-MVC/index.php?action=getAddFilm">ADD MOVIES</option>
-                        <option value="http://localhost/Cinema-MVC/index.php?action=getAddFilm">ADD GENRES</option>
+                        <option value="http://localhost/Cinema-MVC/index.php?action=getAddGenre">ADD GENRES</option>
                         <option value="http://localhost/Cinema-MVC/index.php?action=getAddRole">ADD ROLES</option>
                         <option value="http://localhost/Cinema-MVC/index.php?action=getAddActor">ADD ACTORS</option>
                         <option value="http://localhost/Cinema-MVC/index.php?action=getAddDirector">ADD DIRECTORS</option>

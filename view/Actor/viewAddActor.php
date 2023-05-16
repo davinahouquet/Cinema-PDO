@@ -11,27 +11,27 @@ ob_start();
     
     <div class="form-input">
         <label>First Name :</label>
-        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Title" name="prenom">
     </div>
     <div class="form-input">
         <label>Last Name :</label>
-        <input type="text" placeholder="Genre">
+        <input type="text" placeholder="Genre" name="nom">
     </div>
     <div class="form-input">
         <label>Gender :</label>
-        <input type="radio">M
-        <input type="radio">F
+        <input type="radio" name="sexe">M
+        <input type="radio" name="sexe">F
     </div>
     <div class="form-input">
         <label>Date of birth :</label>
-        <input type="date">
+        <input type="date" name="dateNaissance">
     </div>
     <div class="form-input">
         <label>Image :</label>
         <input type="file" placeholder="Download a file">
     </div>
     <div class="form-input">
-        <input type="submit" class="submit">
+        <input type="submit" class="submit" name="submitActor">
     </div>
 </form>
 

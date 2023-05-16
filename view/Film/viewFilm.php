@@ -6,7 +6,7 @@ ob_start();
 
 <p>There are <?= $requete->rowCount() ?> movies</p>
 <button><a href="http://localhost/Cinema-MVC/index.php?action=getAddFilm">Add Film</a></button>
-<table>
+<table class="table-view-film">
     <thead>
         <tr>
             <th>TITLE</th>
@@ -17,7 +17,7 @@ ob_start();
             foreach($requete->fetchAll() as $film){ ?>
                 <tr>
                     <td>
-                        <a href="index.php?action=detailFilm&id=<?= $id ?>"><?= $film["titre"] ?></a>
+                        <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a>
                     </td>
                     
                 </tr>

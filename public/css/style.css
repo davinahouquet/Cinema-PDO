@@ -42,6 +42,14 @@ option{
     color: var(--dark-blue);
 }
 
+/* Landing Page */
+.landing-page-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /*---------- Page d'ajout d'un film ----------*/
 
 .addFilm{
@@ -120,3 +128,4 @@ span{
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
 }
+

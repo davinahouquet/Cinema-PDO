@@ -35,5 +35,7 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         case "getAddRole" : $ctrlRole->getAddRole();break;
         case "getAddActor" : $ctrlActor->getAddActor(); break;
         case "getAddDirector" : $ctrlDirector->getAddDirector(); break;
+
+        case "AddActor" : $ctrlActor->addActor(); break;
     }
 }

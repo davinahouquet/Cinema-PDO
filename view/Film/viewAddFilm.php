@@ -14,6 +14,20 @@ ob_start();
         <input type="text" placeholder="Title">
     </div>
     <div class="form-input">
+        <label for="director">Directeur :</label>
+            <select>
+                <?php
+                    $i = 1; //On initialise une valeur de départ
+                    // foreach($requeteDirector->fetchAll() as $realisateur){
+                ?>
+                    <!-- <option value="<?= $i ?>"><?= $realisateur["prenom"] . " " . $realisateur["nom"] ?></option> -->
+                <?php
+                        $i++;
+                    // }
+                ?>
+            </select>
+    </div>
+    <div class="form-input">
         <label>Genre</label>
         <input type="text" placeholder="Genre">
     </div>
