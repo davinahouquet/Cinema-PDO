@@ -9,7 +9,7 @@ class RoleController {
     public function listRoles(){
         $pdo = Connect::seConnecter(); //On se connecte
         $requeteRole = $pdo->query(" 
-        SELECT role
+        SELECT id_role, role
         FROM role
         "); //On exécute la requête de notre choix
         $requeteRole->execute();
@@ -25,5 +25,22 @@ class RoleController {
         "); //On exécute la requête de notre choix
         $requeteGetAddRole->execute();
         require ("view/Role/viewAddRole.php");
+    }
+
+    //Afficher les détails d'un rôle
+    public function detailsRole($id){
+        $pdo = Connect::seConnecter();
+            $requeteDetailsRole = $pdo->prepare("SELECT role FROM role WHERE id_role = :id");
+            $requeteDetailsRole->execute(["id" => $id]);
+            
+            $requeteActeur = $pdo->prepare("SELECT f.titre, p.prenom, p.nom
+                            FROM film f, jouer j, role r, acteur a, personne p
+                            WHERE f.id_film = j.id_film
+                            AND j.id_role = r.id_role
+                            AND j.id_acteur = a.id_acteur 
+                            AND a.id_personne = p.id_personne
+                            AND r.id_role = :id");
+            $requeteActeur->execute(["id" => $id]);
+            require("view/Role/viewDetailsRole.php");
     }
 }

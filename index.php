@@ -24,10 +24,15 @@ if(isset($_GET["action"])){ //En fonction de l'action détectée dans l'URL via 
         case "landingPage" : $ctrlCinema->landingPage(); break;
         case "listFilms" : $ctrlCinema->listFilms(); break;
         case "detailFilm" : $ctrlCinema->detailFilm($id); break;
+
         case "listGenres" : $ctrlGenre->listGenres();break;
         case "detailsGenre" : $ctrlGenre->detailsGenre($id);break;
+
         case "listRoles" : $ctrlRole->listRoles();break;
+        case "detailsRole" : $ctrlRole->detailsRole($id); break;
+
         case "listActors" : $ctrlActor->listActors(); break;
+
         case "listDirectors" : $ctrlDirector->listDirectors(); break;
 
         case "getAddFilm" : $ctrlCinema->getAddFilm(); break;
