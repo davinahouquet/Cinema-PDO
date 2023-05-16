@@ -5,26 +5,26 @@ ob_start();
 ?>
 
 
-<form action="index.php?action=addGenre" method="POST" class="addGenre">
+<form enctype='multipart/form-data' action="index.php?action=addGenre" method="post" class="addGenre">
     
     <h1>Add a genre</h1>
 
     <div class="form-input">
-        <label>Name</label>
-        <input type="text" placeholder="Name of the genre">
+        <label>Name : </label>
+        <input type="text" placeholder="Name of the genre" name="nom_genre" id="nom_genre" required>
     </div>
-    <div class="form-input">
+    <!-- <div class="form-input">
         <label>Description</label>
         <input type="text" placeholder="How would you describe this genre?">
-    </div>
+    </div> -->
     <div class="form-input">
-        <input type="submit" class="submit">
+        <input name="submitGenre" type="submit" class="submit" value="Add genre">
     </div>
     
 </form>
 
 <?php
-$titre = "Ajouter film";
+$titre = "Ajouter genre";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php
