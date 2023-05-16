@@ -5,33 +5,37 @@ ob_start();
 ?>
 
 
-<form action="index.php?action=getaddActor" method="POST" class="addActor">
+<form enctype='multipart/form-data' action="index.php?action=addActor" method="post" class="addActor">
     
     <h1>Add an actor/actress</h1>
     
     <div class="form-input">
-        <label>First Name :</label>
-        <input type="text" placeholder="Title" name="prenom">
+        <label for="prenom">First Name :</label>
+        <input type="text" placeholder="First Name" name="prenom" id="prenom">
     </div>
     <div class="form-input">
-        <label>Last Name :</label>
-        <input type="text" placeholder="Genre" name="nom">
+        <label for="nom">Last Name :</label>
+        <input type="text" placeholder="Last Name" name="nom" id="nom">
     </div>
+
     <div class="form-input">
-        <label>Gender :</label>
-        <input type="radio" name="sexe">M
-        <input type="radio" name="sexe">F
+
+        <label for="sexe">Gender :</label>
+            M :</label><input type="radio" name="sexe" id="Homme" value="Homme" >
+            F :</label><input type="radio" name="sexe" id="Femme" value="Femme">
     </div>
+
     <div class="form-input">
-        <label>Date of birth :</label>
-        <input type="date" name="dateNaissance">
+        <label for="dateNaissance">Date of birth :</label>
+        <input type="date" name="dateNaissance" id="dateNaissance" required>
     </div>
-    <div class="form-input">
+    <!-- <div class="form-input">
         <label>Image :</label>
         <input type="file" placeholder="Download a file">
-    </div>
+    </div> -->
     <div class="form-input">
-        <input type="submit" class="submit" name="submitActor">
+        <input type="submit" class="submit" name="submitActor" id="submitActor">
+
     </div>
 </form>
 

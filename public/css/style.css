@@ -98,7 +98,6 @@ span{
     align-items: center;
     justify-content: center;
     margin: 5px;
-    color: var(--dark-blue);
 }
 
 /* ---------- Page d'ajout d'un genre ---------- */
@@ -109,7 +108,7 @@ span{
     flex-direction: column;
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
-    color: var(--dark-blue);
+    color: white;
 }
 
 /* ---------- Page d'ajout d'un acteur ---------- */
@@ -120,7 +119,7 @@ span{
     flex-direction: column;
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
-    color: var(--dark-blue);
+    color: white;
 }
 
 /* ---------- Page d'ajout d'un réalisateur ---------- */

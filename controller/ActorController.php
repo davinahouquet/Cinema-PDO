@@ -17,19 +17,7 @@ class ActorController {
         $requeteActor->execute();
         require ("view/Actor/viewActor.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
     }
-
-    //Page ajout acteur
-    public function getAddActor(){
-        $pdo = Connect::seConnecter(); //On se connecte
-        $requeteGetAddActor = $pdo->query(" 
-        SELECT prenom, nom
-            FROM acteur a
-            INNER JOIN personne ON personne.id_personne = a.id_personne
-        "); //On exécute la requête de notre choix
-        $requeteGetAddActor->execute();
-        require ("view/Actor/viewAddActor.php");
-    }
-
+    
     //Afficher détails d'un acteur
     public function detailsActor($id){
         $pdo = Connect::seConnecter();
@@ -49,15 +37,31 @@ class ActorController {
         require("view/Actor/viewDetailsActor.php");
     }
 
+    //Page ajout acteur
+    public function getAddActor(){
+        $pdo = Connect::seConnecter(); //On se connecte
+        $requeteGetAddActor = $pdo->query(" 
+        SELECT prenom, nom
+            FROM acteur a
+            INNER JOIN personne ON personne.id_personne = a.id_personne
+        "); //On exécute la requête de notre choix
+        $requeteGetAddActor->execute();
+        require ("view/Actor/viewAddActor.php");
+    }
+
+
     // Fonction d'ajout d'un acteur
     public function addActor(){
+
         if(isset($_POST["submitActor"])){
 
+            //On filtre les données entrées dans les input
             $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $dateNaissance = filter_input(INPUT_POST, "date_naissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+            //Seulement si elles sont existantes et filtrées, on exécute la requête
             if($prenom && $nom && $sexe && $dateNaissance){
                 $pdo = Connect::seConnecter();
                 $requetePersonne = $pdo->prepare("INSERT INTO personne (prenom, nom, sexe, dateNaissance)
@@ -69,13 +73,12 @@ class ActorController {
                     'dateNaissance' => $dateNaissance
                 ]);
 
-                $idLast = $pdo->lastInsertId();
-                $requeteActeur = $pdo->prepare("INSERT INTO acteur (id_personne)
-                                                     VALUES (:idLast)");
-                $requeteActeur->execute(['idLast' => $idLast]);
+                $requeteAddActor = $pdo->prepare("INSERT INTO acteur(id_personne)
+                                                SELECT LAST_INSERT_ID()");
+                $requeteAddActor->execute();
 
             }
         }
-        require("view/Accueil/viewAccueil.php");
+        require("view/LandingPage/viewLandingPage.php");
     }
 }
