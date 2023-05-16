@@ -5,33 +5,32 @@ ob_start();
 ?>
 
 
-<form action="index.php?action=getaddDirector" method="POST" class="addDirector">
+<form enctype='multipart/form-data' action="index.php?action=addDirector" method="POST" class="addDirector">
     
     <h1>Add a director</h1>
     
     <div class="form-input">
-        <label>First Name :</label>
-        <input type="text" placeholder="Title">
+        <label for="prenom">First Name :</label>
+        <input type="text" placeholder="First Name" name="prenom" id="prenom">
     </div>
     <div class="form-input">
-        <label>Last Name :</label>
-        <input type="text" placeholder="Genre">
+        <label for="nom">Last Name :</label>
+        <input type="text" placeholder="Last Name" name="nom" id="nom">
     </div>
     <div class="form-input">
-        <label>Gender :</label>
-        <input type="radio">M
-        <input type="radio">F
+
+        <label for="sexe">Gender :</label>
+            M :</label><input type="radio" name="sexe" id="Homme" value="Homme" >
+            F :</label><input type="radio" name="sexe" id="Femme" value="Femme">
     </div>
+
     <div class="form-input">
-        <label>Date of birth :</label>
-        <input type="date">
+        <label for="dateNaissance">Date of birth :</label>
+        <input type="date" name="dateNaissance" id="dateNaissance" required>
     </div>
+    
     <div class="form-input">
-        <label>Image :</label>
-        <input type="file" placeholder="Download a file">
-    </div>
-    <div class="form-input">
-        <input type="submit" class="submit">
+        <input type="submit" class="submit" name="submitDirector" id="submitDirector">
     </div>
 </form>
 

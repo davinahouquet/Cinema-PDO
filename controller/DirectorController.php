@@ -47,4 +47,35 @@ class DirectorController {
         require "view/Director/viewAddDirector.php";
     }
 
+    //Ajout d'un réalisateur
+    public function addDirector(){
+
+        if(isset($_POST["submitDirector"])){
+
+            //On filtre les données entrées dans les input
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            //Seulement si elles sont existantes et filtrées, on exécute la requête
+            if($prenom && $nom && $sexe && $dateNaissance){
+                $pdo = Connect::seConnecter();
+                $requetePersonne = $pdo->prepare("INSERT INTO personne (prenom, nom, sexe, dateNaissance)
+                                          VALUES (:prenom, :nom, :sexe, :dateNaissance)");
+                $requetePersonne->execute([
+                    'prenom' => $prenom,
+                    'nom' => $nom,
+                    'sexe' => $sexe,
+                    'dateNaissance' => $dateNaissance
+                ]);
+
+                $requeteAddDirector = $pdo->prepare("INSERT INTO realisateur(id_personne)
+                                                SELECT LAST_INSERT_ID()");
+                $requeteAddDirector->execute();
+
+            }
+        }
+        require("view/LandingPage/viewLandingPage.php");
+    }
 }
