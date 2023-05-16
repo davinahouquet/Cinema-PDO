@@ -10,11 +10,11 @@ ob_start();
     <h1>Add a movie</h1>
     
     <div class="form-input">
-        <label>Title</label>
-        <input type="text" placeholder="Title">
+        <label for="title">Title</label>
+        <input name="title" type="text" placeholder="Title">
     </div>
     <div class="form-input">
-        <label for="director">Directeur :</label>
+        <label for="director">Director :</label>
             <select>
                 <?php
                     $i = 1; //On initialise une valeur de départ
@@ -34,10 +34,6 @@ ob_start();
     <div class="form-input">
         <label>Release date</label>
         <input type="text" placeholder="Genre">
-    </div>
-    <div class="form-input">
-        <label>Genre</label>
-        <input type="text" placeholder="Release date">
     </div>
     <div class="form-input">
         <label>Duration</label>
@@ -62,7 +58,7 @@ ob_start();
         </div>
     </div>
     <div class="form-input">
-        <input type="submit" class="submit">
+        <input name="submitFilm" type="submit" class="submit">
     </div>
 </form>
 
