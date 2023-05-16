@@ -32,21 +32,22 @@ if(isset($_GET["action"])){
         case "getAddFilm" : $ctrlCinema->getAddFilm(); break;
 
         //GENRE
-        case "listGenres" : $ctrlGenre->listGenres();break;
-        case "detailsGenre" : $ctrlGenre->detailsGenre($id);break;
+        case "listGenres" : $ctrlGenre->listGenres(); break;
+        case "detailsGenre" : $ctrlGenre->detailsGenre($id); break;
         case "getAddGenre" : $ctrlGenre->getAddGenre(); break;
         case "addGenre" : $ctrlGenre->addGenre(); break;
 
         //ROLE
-        case "listRoles" : $ctrlRole->listRoles();break;
+        case "listRoles" : $ctrlRole->listRoles(); break;
         case "detailsRole" : $ctrlRole->detailsRole($id); break;
-        case "getAddRole" : $ctrlRole->getAddRole();break; //Se rendre dans la vue contenant le formulaire d'ajout
-        case "AddActor" : $ctrlActor->addActor(); break;   //L'action d'ajout en elle-même
+        case "getAddRole" : $ctrlRole->getAddRole(); break; //Se rendre dans la vue contenant le formulaire d'ajout
+        case "addRole" : $ctrlRole->addRole(); break;
 
         //ACTEUR
         case "listActors" : $ctrlActor->listActors(); break;
         case "detailsActor" : $ctrlActor->detailsActor($id); break;
         case "getAddActor" : $ctrlActor->getAddActor(); break;
+        case "AddActor" : $ctrlActor->addActor(); break;   //L'action d'ajout en elle-même
 
         //REALISATEUR
         case "listDirectors" : $ctrlDirector->listDirectors(); break;
