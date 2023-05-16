@@ -15,8 +15,8 @@
         <?php
             foreach($requeteActor->fetchAll() as $actor){ ?>
                 <tr>
-                    <td><?= $actor["prenom"] ?></td>
-                    <td><?= $actor["nom"] ?></td>
+                    <td><a href="index.php?action=detailsActor&id=<?=$actor["id_acteur"]?>"><?= $actor["prenom"] ?></a></td>
+                    <td><a href="index.php?action=detailsActor&id=<?=$actor["id_acteur"]?>"><?= $actor["nom"] ?></a></td>
                     
                 </tr>
           <?php  } ?>

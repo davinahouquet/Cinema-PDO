@@ -9,9 +9,10 @@ class ActorController {
     public function listActors(){
         $pdo = Connect::seConnecter(); //On se connecte
         $requeteActor = $pdo->query(" 
-            SELECT prenom, nom
+            SELECT prenom, nom, id_acteur
             FROM acteur a
             INNER JOIN personne ON personne.id_personne = a.id_personne
+            ORDER BY prenom ASC
         "); //On exécute la requête de notre choix
         $requeteActor->execute();
         require ("view/Actor/viewActor.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
@@ -27,6 +28,25 @@ class ActorController {
         "); //On exécute la requête de notre choix
         $requeteGetAddActor->execute();
         require ("view/Actor/viewAddActor.php");
+    }
+
+    //Afficher détails d'un acteur
+    public function detailsActor($id){
+        $pdo = Connect::seConnecter();
+        $requeteDetailsActor = $pdo->prepare("SELECT id_acteur, p.prenom, p.nom, p.sexe, DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') AS date_naissance
+            FROM acteur a, personne p
+            WHERE a.id_personne = p.id_personne
+            AND a.id_acteur = :id
+        ");
+        $requeteDetailsActor->execute(["id" => $id]);
+
+        $requeteFilms = $pdo->prepare("SELECT f.titre, a.id_acteur
+            FROM acteur a, film f, jouer j
+            WHERE a.id_acteur = j.id_acteur
+            AND j.id_film = f.id_film
+            AND a.id_acteur = :id");
+        $requeteFilms->execute(["id" => $id]);
+        require("view/Actor/viewDetailsActor.php");
     }
 
     // Fonction d'ajout d'un acteur
