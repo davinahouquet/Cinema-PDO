@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteGenre->rowCount() ?> genres</p>
-<button><a href="http://localhost/Cinema-MVC/index.php?action=getAddGenre">Add Genre</a></button>
+<button><a href="index.php?action=getAddGenre">Add Genre</a></button>
 
 <table>
     <thead>
@@ -24,7 +24,7 @@
 <?php
 $titre = "Genres list";
 $contenu = ob_get_clean();
-require "/laragon/www/Cinema-MVC/view/template.php";
+require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php
 
 

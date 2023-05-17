@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteRole->rowCount() ?> roles</p>
-<button><a href="http://localhost/Cinema-MVC/index.php?action=getAddRole">Add Role</a></button>
+<button><a href="index.php?action=getAddRole">Add Role</a></button>
 
 <table>
     <thead>

@@ -51,15 +51,15 @@ class CinemaController {
     }
 
     //Ajouter un film
-    public function addFilm(){
-        if(isset($_POST["submitFilm"])){
+    // public function addFilm(){
+    //     if(isset($_POST["submitFilm"])){
 
-            $title = 
-            $releaseDate = 
-            $duration =
-            $plot =
-        }
-    }
+    //         $title = 
+    //         $releaseDate = 
+    //         $duration =
+    //         $plot =
+    //     }
+    // }
         
 
 } //fermeture class

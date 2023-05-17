@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteDirector->rowCount() ?> directors</p>
-<button><a href="http://localhost/Cinema-MVC/index.php?action=getAddDirector">Add Director</a></button>
+<button><a href="index.php?action=getAddDirector">Add Director</a></button>
 
 <table>
     <thead>

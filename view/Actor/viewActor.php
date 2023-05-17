@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteActor->rowCount() ?> actors</p>
-<button><a href="http://localhost/Cinema-MVC/index.php?action=getAddActor">Add Actor</a></button>
+<button><a href="index.php?action=getAddActor">Add Actor</a></button>
 
 <table>
     <thead>
@@ -27,4 +27,4 @@
 $titre = "Liste des acteurs";
 $titre_secondaire = "Liste des acteurs";
 $contenu = ob_get_clean();
-require "/laragon/www/Cinema-MVC/view/template.php";
+require "view/template.php";
