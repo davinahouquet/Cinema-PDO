@@ -72,18 +72,21 @@ class CinemaController {
 
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneSortie = filter_input(INPUT_POST, "anneSortie", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
             $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            if($titre && $anneSortie && $duree && $synopsis && $note && $affiche){
-                $requeteAjouterFilm = $pdo->prepare("INSERT INTO film (titre, anneeSortie, duree, synopsis, note, affiche)
-                VALUES(:titre, :anneSortie, :duree, :synopsis, :note, :affiche)");
+            if($titre && $realisateur && $genre && $anneSortie && $duree && $synopsis && $note && $affiche){
+                $requeteAjouterFilm = $pdo->prepare("INSERT INTO film (titre, anneeSortie, duree, synopsis, note, affiche, id_realisateur)
+                VALUES(:titre, :anneSortie, :duree, :synopsis, :note, :affiche, :realisateur)");
 
                 $requeteAjouterFilm -> execute([
                     "titre" => $titre,
+                    "realisateur" => $realisateur,
+                    "genre" => $genre,
                     "anneSortie" => $anneSortie,
                     "duree" => $duree,
                     "synopsis" => $synopsis,
