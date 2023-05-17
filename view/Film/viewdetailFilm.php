@@ -3,6 +3,8 @@
 ob_start();
 
 $detailFilm = $requeteFilm->fetchAll();
+$genres = $requeteGenre->fetchAll();
+
 ?>
 
 <table>
@@ -14,6 +16,7 @@ $detailFilm = $requeteFilm->fetchAll();
             <th>Note</th>
             <th>Director</th>
             <th>Synopsis</th>
+            <th>Genre(s)</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +29,14 @@ $detailFilm = $requeteFilm->fetchAll();
                     <td><?= $film["note"]?></td>
                     <td><a href="index.php?action=detailsDirector&id=<?=$film["id_realisateur"]?>"><?= $film["prenom"]." ".$film["nom"] ?></a></td>
                     <td><?= $film["synopsis"] ?></td>
+
+                    <?php 
+                    foreach($genres as $genre){
+                    ?>    
+                        <td><?= $genre["nom_genre"]?></td>
+                    <?php
+                    }
+                    ?>
                 </tr>
           <?php  } ?>
     </tbody>

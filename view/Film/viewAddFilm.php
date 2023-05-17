@@ -12,11 +12,11 @@ ob_start();
     
     <div class="form-input">
         <label for="title">Title :</label>
-        <input name="titre" id="titre" type="text" placeholder="Title">
+        <input name="titre" id="titre" type="text" placeholder="Title" required>
     </div>
     <div class="form-input">
         <label for="director">Director :</label>
-            <select class="select">
+            <select class="select" name="realisateur">
 
                 <?php
                    
@@ -48,29 +48,29 @@ ob_start();
 
 
     <div class="form-input">
-        <label>Release date</label>
-        <input name="dateSortie" id="dateSortie" type="text" placeholder="Released in...">
+        <label>Release date :</label>
+        <input name="anneeSortie" id="dateSortie" type="number" placeholder="Released in..." min="1" max="3000" required>
     </div>
     <div class="form-input">
-        <label>Duration (min)</label>
-        <input name="duree" id="duree" type="text" placeholder="min">
+        <label>Duration (min) :</label>
+        <input name="duree" id="duree" type="number" min="1" placeholder="min"  required>
     </div>
     <div class="form-input">
-        <label>Plot</label>
-        <input name="synopsis" id="synopsis" type="text" placeholder="Plot">
+        <label>Plot :</label>
+        <input name="synopsis" id="synopsis" type="text" placeholder="Plot"  required>
     </div>
     <div class="form-input">
-        <label>Image</label>
-        <input name="affiche" id="affiche" type="file" placeholder="Download a file">
+        <label>Image :</label>
+        <input name="affiche" id="affiche" type="file" placeholder="Download a file"  required>
     </div>
     <div class="form-input">
-        <label for="note">Note</label>
-        <input type="number" name="note" id="note" min="0" max="5">
+        <label for="note">Note :</label>
+        <input type="number" name="note" id="note" min="1" max="5"  required>
        
         
     </div>
     <div class="button-input">
-        <input name="submitFilm" id="submitFilm" type="submit" class="submit">
+        <input name="submitFilm" id="submitFilm" type="submit" class="submit"  required>
     </div>
 </form>
 </div>
