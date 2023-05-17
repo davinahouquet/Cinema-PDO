@@ -115,7 +115,11 @@ class CinemaController {
             }
             require("view/Film/viewAddFilm.php");
         }
-            
+       
+    // public function addCasting(){
+    //     $pdo = Connect::seConnecter();
+
+    // }
 
 } //Fermeture class
 

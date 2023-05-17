@@ -46,7 +46,12 @@ option{
     color: var(--dark-blue);
 }
 
-/* Landing Page */
+.film-button{
+    background-color: rgba(137, 47, 44, 0.7);
+    border-radius: 10px;
+    padding: 5px;
+}
+/*---------- Landing Page ----------*/
 .landing-page-title{
     display: flex;
     flex-direction: column;
