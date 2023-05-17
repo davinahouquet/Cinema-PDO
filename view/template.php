@@ -32,7 +32,7 @@
                 <li>ADD INFOS
                     <select onchange="location = this.value;">
                         <option></option>
-                        <option value="index.php?action=getAddFilm">ADD MOVIES</option>
+                        <option value="index.php?action=addFilm">ADD MOVIES</option>
                         <option value="index.php?action=getAddGenre">ADD GENRES</option>
                         <option value="index.php?action=getAddRole">ADD ROLES</option>
                         <option value="index.php?action=getAddActor">ADD ACTORS</option>

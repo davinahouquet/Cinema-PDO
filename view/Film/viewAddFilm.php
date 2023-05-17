@@ -4,66 +4,70 @@ ob_start();
 
 ?>
 
+<div class="container-form">
 
 <form action="index.php?action=addFilm" method="POST" class="addFilm">
     
     <h1>Add a movie</h1>
     
     <div class="form-input">
-        <label for="title">Title</label>
-        <input name="title" type="text" placeholder="Title">
+        <label for="title">Title :</label>
+        <input name="titre" id="titre" type="text" placeholder="Title">
     </div>
     <div class="form-input">
         <label for="director">Director :</label>
-            <select>
+            <select class="select">
+
                 <?php
-                    $i = 1; //On initialise une valeur de départ
-                    // foreach($requeteDirector->fetchAll() as $realisateur){
+                   
+                    foreach($requeteDirector->fetchAll() as $realisateur){
                 ?>
-                    <!-- <option value="<?= $i ?>"><?= $realisateur["prenom"] . " " . $realisateur["nom"] ?></option> -->
+                    <option value="<?= $realisateur["id_realisateur"]?>"><?= $realisateur["prenom"] . " " . $realisateur["nom"] ?></option>
                 <?php
-                        $i++;
-                    // }
+                    }
                 ?>
             </select>
     </div>
+
     <div class="form-input">
-        <label>Genre</label>
-        <input type="text" placeholder="Genre">
+        <label>Genre :</label>
+        
+        <select name="genre" type="text" placeholder="Genre" class="select">
+            <option>Exemple</option> 
+            <option>Exemple</option>
+        </select>
     </div>
+
+
     <div class="form-input">
         <label>Release date</label>
-        <input type="text" placeholder="Genre">
+        <input name="dateSortie" id="dateSortie" type="text" placeholder="Released in...">
     </div>
     <div class="form-input">
-        <label>Duration</label>
-        <input type="text" placeholder="Duration"> min
+        <label>Duration (min)</label>
+        <input name="duree" id="duree" type="text" placeholder="min">
     </div>
     <div class="form-input">
         <label>Plot</label>
-        <input type="text" placeholder="Plot">
+        <input name="synopsis" id="synopsis" type="text" placeholder="Plot">
     </div>
     <div class="form-input">
         <label>Image</label>
-        <input type="file" placeholder="Download a file">
+        <input name="affiche" id="affiche" type="file" placeholder="Download a file">
     </div>
     <div class="form-input">
-        <label>Note</label>
-        <div class="stars-container">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-        </div>
+        <label for="note">Note</label>
+        <input type="number" name="note" id="note" min="0" max="5">
+       
+        
     </div>
-    <div class="form-input">
-        <input name="submitFilm" type="submit" class="submit">
+    <div class="button-input">
+        <input name="submitFilm" id="submitFilm" type="submit" class="submit">
     </div>
 </form>
-
+</div>
 <?php
-$titre = "Ajouter film";
+$titre = "Add Film";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

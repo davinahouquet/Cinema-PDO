@@ -24,7 +24,7 @@ $detailFilm = $requeteFilm->fetchAll();
                     <td><?= $film["anneeSortie"]?></td>
                     <td><?= $film["duree"]?></td>
                     <td><?= $film["note"]?></td>
-                    <td><?= $film["prenom"]." ".$film["nom"] ?></td>
+                    <td><a href="index.php?action=detailsDirector&id=<?=$film["id_realisateur"]?>"><?= $film["prenom"]." ".$film["nom"] ?></a></td>
                     <td><?= $film["synopsis"] ?></td>
                 </tr>
           <?php  } ?>
@@ -33,7 +33,7 @@ $detailFilm = $requeteFilm->fetchAll();
 
 
 <?php
-$titre = "détails films";
+$titre = "Details";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

@@ -5,7 +5,7 @@ ob_start();
 ?>
 
 <p>There are <?= $requete->rowCount() ?> movies</p>
-<button><a href="index.php?action=getAddFilm">Add Film</a></button>
+<button><a href="index.php?action=addFilm">Add Film</a></button>
 <table class="table-view-film">
     <thead>
         <tr>
