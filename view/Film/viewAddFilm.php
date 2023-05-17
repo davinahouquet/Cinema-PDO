@@ -33,8 +33,16 @@ ob_start();
         <label>Genre :</label>
         
         <select name="genre" type="text" placeholder="Genre" class="select">
-            <option>Exemple</option> 
-            <option>Exemple</option>
+
+            <?php
+
+                foreach($requeteGenre->fetchAll() as $genre){
+            ?>
+                <option value="<?= $genre["id_genre"]?>"><?= $genre["nom_genre"]?></option>
+            <?php
+                    }
+
+            ?>
         </select>
     </div>
 

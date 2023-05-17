@@ -62,6 +62,12 @@ class CinemaController {
         
         $requeteDirector->execute();
 
+        $requeteGenre = $pdo->query("SELECT genre.id_genre, nom_genre
+        FROM genre
+        INNER JOIN categoriser ON categoriser.id_genre = genre.id_genre");
+
+        $requeteGenre-> execute();
+
         if(isset($_POST["submitFilm"])){
 
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
