@@ -109,12 +109,12 @@ class CinemaController {
     //La page qui permet d'ajouter un casting
     public function getAddCasting(){
         $pdo = Connect::seConnecter();
-            $requeteFilm = $pdo->query("SELECT f.titre
-                                    FROM film f");
-            $requeteActor = $pdo->query("SELECT p.prenom, p.nom
+            $requeteFilm = $pdo->query("SELECT id_film, titre
+                                    FROM film");
+            $requeteActor = $pdo->query("SELECT a.id_acteur, p.prenom, p.nom
                                           FROM personne p, acteur a
                                           WHERE p.id_personne = a.id_personne");
-            $requeteRole = $pdo->query("SELECT role
+            $requeteRole = $pdo->query("SELECT id_role, role
                                         FROM role");
             require("view/Film/viewAddCasting.php");
     }
@@ -143,7 +143,7 @@ class CinemaController {
                 ]);     
             }
         }
-        require("view/Film/viewFilm.php");
+        require("view/LandingPage/viewLandingPage.php");
     }
 } //Fermeture classe
 

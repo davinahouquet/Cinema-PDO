@@ -90,6 +90,7 @@ input{
     border-radius: 10px;
     padding: 2px;
     color: var(--dark-blue);
+    cursor: pointer;
 }
 
 .submit{
@@ -168,3 +169,7 @@ span{
     color: var(--dark-blue);
 }
 
+
+select{
+    color: var(--dark-blue);
+}
