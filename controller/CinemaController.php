@@ -27,7 +27,7 @@ class CinemaController {
     public function detailFilm($id){
         $pdo = Connect::seConnecter(); 
         $requeteFilm = $pdo->prepare(" 
-        SELECT realisateur.id_realisateur, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
+        SELECT realisateur.id_realisateur, film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom, film.affiche
         FROM film, realisateur, personne
         WHERE film.id_realisateur = realisateur.id_realisateur
         AND realisateur.id_personne = personne.id_personne
@@ -101,7 +101,7 @@ class CinemaController {
 
             }
         }
-        require("view/Film/viewFilm.php");
+        require("view/LandingPage/viewLandingPage.php");
     }
     
     //--- CASTING ------------------------------------------------------------------// 
@@ -145,27 +145,26 @@ class CinemaController {
         }
         require("view/LandingPage/viewLandingPage.php");
     }
-} //Fermeture classe
-
-
+        
     //Supprimer un film
-    // public function deleteFilm($id){
+    public function deleteFilm($id){
 
-    //     $pdo = Connect::seConnecter();
-    //     if(isset($_POST["deleteFilm"])){
+        $pdo = Connect::seConnecter();
+        if(isset($_POST["deleteFilm"])){
             
-    //         $requeteDeleteFilmJouer = $pdo->prepare("DELETE id_film FROM jouer");
-    //         $requeteDeleteFilmJouer ->execute(["id_film"=>$id]);
+            $requeteDeleteFilmJouer = $pdo->prepare("DELETE FROM jouer WHERE id_film = :id"); //D'abord supprimer les clés étrangères
+            $requeteDeleteFilmJouer ->execute(["id"=>$id]);
 
-    //         $requeteDeleteFilmCategoriser = $pdo->prepare("DELETE id_film FROM categoriser");
-    //         $requeteDeleteFilmCategoriser->execute(["id_film"=>$id]);
+            $requeteDeleteFilmCategoriser = $pdo->prepare("DELETE FROM categoriser WHERE id_film = :id");
+            $requeteDeleteFilmCategoriser->execute(["id"=>$id]);
 
-    //         $requeteDeleteFilm = $pdo->prepare("DELETE FROM film WHERE id_film : :id");
-    //         $requeteDeleteFilm->execute(["id_film"=>$id]);
-    //     }
-    //     require("view/Film/viewdetailFilm.php");
-    // }
-
+            $requeteDeleteFilm = $pdo->prepare("DELETE FROM film WHERE id_film = :id");
+            $requeteDeleteFilm->execute(["id"=>$id]);
+        }
+        require("view/LandingPage/viewLandingPage.php");
+    }
+    
+} //Fermeture classe
 
 
 

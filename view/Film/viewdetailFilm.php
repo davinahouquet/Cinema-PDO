@@ -17,6 +17,7 @@ $genres = $requeteGenre->fetchAll();
             <th>Director</th>
             <th>Synopsis</th>
             <th>Genre(s)</th>
+            <th>Image</th>
         </tr>
     </thead>
     <tbody>
@@ -36,11 +37,17 @@ $genres = $requeteGenre->fetchAll();
                     <?php
                     }
                     ?>
+                    <td><img src='<?= $film["affiche"]?>'></td>
                 </tr>
           <?php  } ?>
     </tbody>
 </table>
-<form method="post" action="index.php?action=deleteFilm">
+
+<form method="post" action="index.php?action=updateFilm&id=<?= $film["id_film"]?>" class="button">
+    <input type="submit" name="updateFilm" value="Update this movie">
+</form>
+
+<form method="post" action="index.php?action=deleteFilm&id=<?= $film["id_film"]?>" class="button">
     <input type="submit" name="deleteFilm" value="Delete this movie">
 </form>
 
