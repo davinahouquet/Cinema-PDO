@@ -29,9 +29,11 @@ if(isset($_GET["action"])){
         case "landingPage" : $ctrlCinema->landingPage(); break;
         case "listFilms" : $ctrlCinema->listFilms(); break;
         case "detailFilm" : $ctrlCinema->detailFilm($id); break;
-        case "getAddFilm" : $ctrlCinema->getAddFilm(); break;
+        case "getAddFilm" : $ctrlCinema->getAddFilm();break;
         case "addFilm" : $ctrlCinema->addFilm();break;
-        // case "addCasting" : $ctrlCinema->addCasting(); break; 
+        case "getAddCasting" : $ctrlCinema->getAddCasting();break;
+        case "addCasting" : $ctrlCinema->addCasting(); break; 
+        // case "deleteFilm" : $ctrlCinema->deleteFilm($id); break;
 
         //GENRE
         case "listGenres" : $ctrlGenre->listGenres(); break;

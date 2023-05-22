@@ -29,7 +29,6 @@ $genres = $requeteGenre->fetchAll();
                     <td><?= $film["note"]?></td>
                     <td><a href="index.php?action=detailsDirector&id=<?=$film["id_realisateur"]?>"><?= $film["prenom"]." ".$film["nom"] ?></a></td>
                     <td><?= $film["synopsis"] ?></td>
-
                     <?php 
                     foreach($genres as $genre){
                     ?>    
@@ -41,7 +40,9 @@ $genres = $requeteGenre->fetchAll();
           <?php  } ?>
     </tbody>
 </table>
-
+<form method="post" action="index.php?action=deleteFilm">
+    <input type="submit" name="deleteFilm" value="Delete this movie">
+</form>
 
 <?php
 $titre = "Details";
