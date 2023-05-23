@@ -24,6 +24,8 @@ ob_start();
     <input type="submit" name="deleteRole" value="Delete this role">
 </form>
 
+<a href="index.php?action=updateRole&id=<?= $role['id_role'] ?>"><input type="submit" value="Update Role"></a>
+
 <?php
 $titre = "Role details";
 $contenu = ob_get_clean();

@@ -50,7 +50,7 @@ if(isset($_GET["action"])){
         case "getAddRole" : $ctrlRole->getAddRole(); break;
         case "addRole" : $ctrlRole->addRole(); break;
         case "deleteRole" : $ctrlRole->deleteRole($id);break;
-        // case "updateRole" : $ctrlRole->updateRole($id); break;
+        case "updateRole" : $ctrlRole->updateRole($id); break;
 
         //ACTEUR
         case "listActors" : $ctrlActor->listActors(); break;
