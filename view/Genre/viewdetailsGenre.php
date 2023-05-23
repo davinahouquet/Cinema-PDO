@@ -18,11 +18,14 @@ ob_start();
     <?php        
          }
     ?>
+    <form action="index.php?action=deleteGenre&id=<?=$genre["id_genre"]?>" method="post">
+        <input name="deleteGenre" type="submit" value="Delete this genre">
+    </form>
 </div>
 
 
 <?php
-$titre = "Genre";
+$titre = "Details genre";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

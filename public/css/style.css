@@ -158,17 +158,15 @@ span{
 }
 
 /* ---------- Page d'ajout d'un réalisateur ---------- */
-.addDirector{
+select{
+    color: var(--dark-blue);
+}
+
+.updateFilm, .addCasting, .addDirector{
     width: 400px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
-    color: var(--dark-blue);
-}
-
-
-select{
-    color: var(--dark-blue);
 }

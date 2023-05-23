@@ -187,6 +187,7 @@ class CinemaController {
 
         if(isset($_POST["submitUpdate"])){
 
+    
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeSortie = filter_input(INPUT_POST, "anneeSortie", FILTER_SANITIZE_NUMBER_INT);
@@ -196,61 +197,64 @@ class CinemaController {
             $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            //Update titre
-            $requeteUpdateTitle = $pdo->prepare("UPDATE film SET titre = :titre WHERE id_film = :id");
-            $requeteUpdateTitle->execute([
-                "titre" => $titre,
-                "id" => $id
-            ]);
-            
-            //Update genre
-            $requeteUpdateGenre = $pdo->prepare("UPDATE categoriser SET id_genre = :genre WHERE id_genre = :id");
-            $requeteUpdateGenre->execute([
-                "genre" => $genre,
-                "id" => $id
-            ]);
+            if($titre !== false && $genre !== false && $anneeSortie !== false && $duree !== false && $synopsis !== false && $note !== false && $affiche !== false && $realisateur){
+                
+                //Update titre
+                $requeteUpdateTitle = $pdo->prepare("UPDATE film SET titre = :titre WHERE id_film = :id"); //requete testée
+                $requeteUpdateTitle->execute([
+                    "titre" => $titre,
+                    "id" => $id
+                ]);
+                
+                //Update genre
+                $requeteUpdateGenre = $pdo->prepare("UPDATE categoriser SET id_genre = :genre WHERE id_film = :id"); //requete testée
+                $requeteUpdateGenre->execute([
+                    "genre" => $genre,
+                    "id" => $id
+                ]);
 
-            //Update release date
-            $requeteUpdateDate = $pdo->prepare("UPDATE film SET anneeSortie = :anneeSortie WHERE id_film = :id");
-            $requeteUpdateDate->execute([
-                "anneeSortie" => $anneeSortie,
-                "id" => $id
-            ]);
+                //Update release date
+                $requeteUpdateDate = $pdo->prepare("UPDATE film SET anneeSortie = :anneeSortie WHERE id_film = :id"); //requete testée
+                $requeteUpdateDate->execute([
+                    "anneeSortie" => $anneeSortie,
+                    "id" => $id
+                ]);
 
-            //Update duration
-            $requeteUpdateDuration = $pdo->prepare("UPDATE film SET duree = :duree WHERE id_film = :id");
-            $requeteUpdateDuration->execute([
-                "duree" => $duree,
-                "id" => $id
-            ]);
-            
-            //Update plot
-            $requeteUpdatePlot = $pdo->prepare("UPDATE film SET synopsis = :synopsis WHERE id_film = :id");
-            $requeteUpdatePlot->execute([
-                "synopsis" => $synopsis,
-                "id" => $id
-            ]);
-            
-            //Update image
-            $requeteUpdateImage = $pdo->prepare("UPDATE film SET affiche = :affiche WHERE id_film = :id");
-            $requeteUpdateImage->execute([
-                "affiche" => $affiche,
-                "id" => $id
-            ]);
-            
-            //Update note
-            $requeteUpdateNote = $pdo->prepare("UPDATE film SET note = :note WHERE id_film = :id");
-            $requeteUpdateNote->execute([
-                "note" => $note,
-                "id" => $id
-            ]);
-            
-            //Update réalisateur
-            $requeteUpdateRealisateur = $pdo->prepare("UPDATE film SET id_realisateur = :realisateur WHERE id_film = :id");
-            $requeteUpdateRealisateur->execute([
-                "realisateur" => $realisateur,
-                "id" => $id
-            ]);
+                //Update duration
+                $requeteUpdateDuration = $pdo->prepare("UPDATE film SET duree = :duree WHERE id_film = :id"); //requete testée
+                $requeteUpdateDuration->execute([
+                    "duree" => $duree,
+                    "id" => $id
+                ]);
+                
+                //Update plot
+                $requeteUpdatePlot = $pdo->prepare("UPDATE film SET synopsis = :synopsis WHERE id_film = :id"); //requete testée
+                $requeteUpdatePlot->execute([
+                    "synopsis" => $synopsis,
+                    "id" => $id
+                ]);
+                
+                //Update image
+                $requeteUpdateImage = $pdo->prepare("UPDATE film SET affiche = :affiche WHERE id_film = :id"); //requete testée
+                $requeteUpdateImage->execute([
+                    "affiche" => $affiche,
+                    "id" => $id
+                ]);
+                
+                //Update note
+                $requeteUpdateNote = $pdo->prepare("UPDATE film SET note = :note WHERE id_film = :id"); //requete testée
+                $requeteUpdateNote->execute([
+                    "note" => $note,
+                    "id" => $id
+                ]);
+                
+                //Update réalisateur
+                $requeteUpdateRealisateur = $pdo->prepare("UPDATE film SET id_realisateur = :realisateur WHERE id_film = :id"); //requete testée
+                $requeteUpdateRealisateur->execute([
+                    "realisateur" => $realisateur,
+                    "id" => $id
+                ]);
+            }
         }
         require("view/Film/viewUpdateFilm.php");
     }

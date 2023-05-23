@@ -41,6 +41,7 @@ if(isset($_GET["action"])){
         case "detailsGenre" : $ctrlGenre->detailsGenre($id); break;
         case "getAddGenre" : $ctrlGenre->getAddGenre(); break;
         case "addGenre" : $ctrlGenre->addGenre(); break;
+        case "deleteGenre" : $ctrlGenre->deleteGenre($id);break;
 
         //ROLE
         case "listRoles" : $ctrlRole->listRoles(); break;

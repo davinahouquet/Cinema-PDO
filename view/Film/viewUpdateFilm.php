@@ -6,7 +6,7 @@ ob_start();
 
 <div class="container-form">
 
-<form action="index.php?action=updateFilm" method="POST" class="updateFilm">
+<form action="index.php?action=updateFilm&id=<?=$film["id_film"]?>" method="POST" class="updateFilm">
     
     <h1>Update this movie</h1>
     
@@ -70,12 +70,13 @@ ob_start();
         
     </div>
     <div class="button-input">
-        <input name="submitUpdate" id="submitUpdate" type="submit" class="submit"  required>
+        <input name="submitUpdate" value="Update" id="submitUpdate" type="submit" class="submit"  required>
     </div>
 </form>
 </div>
+
 <?php
-$titre = "Add Film";
+$titre = "Update Film";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

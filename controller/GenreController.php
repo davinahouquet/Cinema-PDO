@@ -16,7 +16,7 @@ class GenreController {
     //Afficher les détails d'un genre (films reliés)
     public function detailsGenre($id){
         $pdo = Connect::seConnecter(); 
-        $requeteDetailsGenre = $pdo->prepare("SELECT nom_genre FROM genre WHERE id_genre = :id
+        $requeteDetailsGenre = $pdo->prepare("SELECT id_genre, nom_genre FROM genre WHERE id_genre = :id
         ");
         $requeteDetailsGenre->execute(["id"=> $id]);
 
@@ -51,6 +51,17 @@ class GenreController {
             }
         }
         require("view/LandingPage/viewLandingPage.php");
+    }
+
+    //Supprimer un genre
+    public function deleteGenre($id){
+
+        if(isset($_POST["deleteGenre"])){  
+            $pdo = Connect::seConnecter(); 
+            $requeteDeleteGenre = $pdo->prepare("DELETE FROM genre WHERE id_genre = :id");
+            $requeteDeleteGenre->execute(["id" => $id]);
+        }
+         require("view/LandingPage/viewLandingPage.php");
     }
 }
 
