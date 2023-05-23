@@ -34,7 +34,7 @@ if(isset($_GET["action"])){
         case "getAddCasting" : $ctrlCinema->getAddCasting();break;
         case "addCasting" : $ctrlCinema->addCasting(); break; 
         case "deleteFilm" : $ctrlCinema->deleteFilm($id); break;
-        case "updateFilm" : $ctrlCinema->updateFilm(); break;
+        case "updateFilm" : $ctrlCinema->updateFilm($id); break;
 
         //GENRE
         case "listGenres" : $ctrlGenre->listGenres(); break;
