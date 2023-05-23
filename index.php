@@ -55,12 +55,14 @@ if(isset($_GET["action"])){
         case "detailsActor" : $ctrlActor->detailsActor($id); break;
         case "getAddActor" : $ctrlActor->getAddActor(); break;
         case "addActor" : $ctrlActor->addActor(); break;
+        case "deleteActor" : $ctrlActor->deleteActor($id); break;
 
         //REALISATEUR
         case "listDirectors" : $ctrlDirector->listDirectors(); break;
         case "detailsDirector" : $ctrlDirector->detailsDirector($id); break;
         case "getAddDirector" : $ctrlDirector->getAddDirector(); break;
         case "addDirector" : $ctrlDirector->addDirector(); break;
+        // case "deleteActor" : $ctrlDirector->deleteDirector($id); break;
 
     }
 }

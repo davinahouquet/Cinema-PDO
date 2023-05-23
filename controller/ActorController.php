@@ -81,4 +81,22 @@ class ActorController {
         }
         require("view/LandingPage/viewLandingPage.php");
     }
+
+    //Supprimer acteur
+    public function deleteActor($id){
+        if(isset($_POST["deleteActor"])){
+            $pdo = Connect::seConnecter();
+            $requeteDeleteActor = $pdo->prepare("DELETE FROM jouer WHERE id_acteur = :id"); //D'abord supprimer les clés étrangères
+            $requeteDeleteActor->execute(["id"=>$id]);
+
+            $requeteDeleteActor1 = $pdo->prepare("DELETE FROM acteur WHERE id_acteur = :id");
+            $requeteDeleteActor1->execute(["id"=>$id]);
+
+            // $requeteDeleteActor2 = $pdo->prepare("DELETE FROM personne p
+            // JOIN acteur a ON a.id_personne = p.id_personne
+            // WHERE a.id_acteur = :id");
+            // $requeteDeleteActor2->execute(["id"=>$id]);
+        }
+        require("view/LandingPage/viewLandingPage.php");
+    }
 }
