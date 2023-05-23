@@ -14,14 +14,14 @@ ob_start();
     <?php
         foreach($requeteActeur->fetchAll() as $acteur){
     ?>
-         <p><a href="#">Movie related : <?= $acteur["titre"] ?></a>. <br> Interpreted by : <a href ="#" class="lienListe"><?= $acteur["prenom"] ." " . $acteur["nom"] ?></a></p>
+         <p>Movie related : <a href="index.php?action=detailFilm&id=<?=$acteur["id_film"]?>"><?= $acteur["titre"] ?></a>. <br> Interpreted by : <a href ="index.php?action=detailsActor&id=<?= $acteur["id_acteur"] ?>" class="lienListe"><?= $acteur["prenom"] ." " . $acteur["nom"] ?></a></p>
     <?php        
          }
     ?>
 </div>
 
 <form action="index.php?action=deleteRole&id=<?=$role["id_role"]?>" method="post">
-    <input type="submit" name="deleteRole">
+    <input type="submit" name="deleteRole" value="Delete this role">
 </form>
 
 <?php

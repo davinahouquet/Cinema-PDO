@@ -28,7 +28,7 @@ class ActorController {
         ");
         $requeteDetailsActor->execute(["id" => $id]);
 
-        $requeteFilms = $pdo->prepare("SELECT f.titre, a.id_acteur
+        $requeteFilms = $pdo->prepare("SELECT f.id_film, f.titre, a.id_acteur
             FROM acteur a, film f, jouer j
             WHERE a.id_acteur = j.id_acteur
             AND j.id_film = f.id_film

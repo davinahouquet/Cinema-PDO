@@ -34,7 +34,7 @@ class RoleController {
             $requeteDetailsRole = $pdo->prepare("SELECT id_role, role FROM role WHERE id_role = :id");
             $requeteDetailsRole->execute(["id" => $id]);
             
-            $requeteActeur = $pdo->prepare("SELECT f.titre, p.prenom, p.nom
+            $requeteActeur = $pdo->prepare("SELECT a.id_acteur, f.titre, f.id_film, p.prenom, p.nom
                             FROM film f, jouer j, role r, acteur a, personne p
                             WHERE f.id_film = j.id_film
                             AND j.id_role = r.id_role

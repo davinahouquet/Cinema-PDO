@@ -27,6 +27,7 @@ class CinemaController {
     //Afficher les détails d'un film
     public function detailFilm($id){
         $pdo = Connect::seConnecter(); 
+        
         $requeteFilm = $pdo->prepare(" 
         SELECT realisateur.id_realisateur, film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom, film.affiche
         FROM film, realisateur, personne
@@ -38,7 +39,7 @@ class CinemaController {
         $requeteFilm->execute(["id" => $id]);
 
         $requeteGenre = $pdo->prepare("
-        SELECT f.titre, g.nom_genre
+        SELECT f.titre, g.nom_genre, g.id_genre
         FROM film f
         INNER JOIN categoriser c ON f.id_film = c.id_film
         INNER JOIN genre g ON g.id_genre = c.id_genre
@@ -160,6 +161,7 @@ class CinemaController {
             $requeteDeleteFilm = $pdo->prepare("DELETE FROM film WHERE id_film = :id");
             $requeteDeleteFilm->execute(["id"=>$id]);
         }
+        header("Location: index.php?action=listFilms");
         require("view/LandingPage/viewLandingPage.php");
     }
     
@@ -174,7 +176,7 @@ class CinemaController {
         WHERE film.id_realisateur = realisateur.id_realisateur
         AND realisateur.id_personne = personne.id_personne
         AND film.id_film = :id
-        "); //On exécute la requête de notre choix
+        ");
         $requete->execute(["id" => $id]);
 
         $requeteDirector = $pdo->query("SELECT id_realisateur, prenom, nom
@@ -191,7 +193,7 @@ class CinemaController {
 
     
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            // $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeSortie = filter_input(INPUT_POST, "anneeSortie", FILTER_SANITIZE_NUMBER_INT);
             $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
             $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -213,14 +215,12 @@ class CinemaController {
                     "realisateur" => $realisateur,
                     "id" => $id
                 ]);
-
                 // //Update genre
-                // $requeteUpdateGenre = $pdo->prepare("UPDATE categoriser SET id_genre = :genre WHERE id_film = :id"); //requete testée
-                // $requeteUpdateGenre->execute([
-                //     "genre" => $genre,
-                //     "id" => $id
-                // ]);
-
+                $requeteUpdateGenre = $pdo->prepare("UPDATE categoriser SET id_genre = :genre WHERE id_film = :id");
+                $requeteUpdateGenre->execute([
+                    "genre" => $genre,
+                    "id" => $id
+                ]);
 
             }
             header("Location: index.php?action=detailFilm&id= $id");

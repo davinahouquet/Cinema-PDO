@@ -16,11 +16,12 @@ class GenreController {
     //Afficher les détails d'un genre (films reliés)
     public function detailsGenre($id){
         $pdo = Connect::seConnecter(); 
+
         $requeteDetailsGenre = $pdo->prepare("SELECT id_genre, nom_genre FROM genre WHERE id_genre = :id
         ");
         $requeteDetailsGenre->execute(["id"=> $id]);
 
-        $requeteFilm = $pdo->prepare("SELECT f.titre, g.id_genre
+        $requeteFilm = $pdo->prepare("SELECT f.id_film, f.titre, g.id_genre
                         FROM categoriser c, film f, genre g
                         WHERE c.id_film = f.id_film
                         AND c.id_genre = g.id_genre

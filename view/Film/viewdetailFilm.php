@@ -33,7 +33,7 @@ $genres = $requeteGenre->fetchAll();
                     <?php 
                     foreach($genres as $genre){
                     ?>    
-                        <td><?= $genre["nom_genre"]?></td>
+                        <td><a href="index.php?action=detailsGenre&id=<?= $genre["id_genre"]?>"><?= $genre["nom_genre"]?></a></td>
                     <?php
                     }
                     ?>

@@ -28,7 +28,7 @@ class DirectorController {
         ");
         $requeteDetailsDirector->execute(["id" => $id]);
 
-        $requeteFilms = $pdo->prepare("SELECT f.titre, r.id_realisateur
+        $requeteFilms = $pdo->prepare("SELECT f.id_film, f.titre, r.id_realisateur
         FROM realisateur r, film f
         WHERE r.id_realisateur = f.id_realisateur
         AND r.id_realisateur = :id");

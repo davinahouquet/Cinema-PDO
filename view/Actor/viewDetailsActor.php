@@ -21,7 +21,7 @@ ob_start();
     <?php
         foreach($requeteFilms->fetchAll() as $film){
     ?>
-        <p><?= $film["titre"] ?></p>
+        <p><a href="index.php?action=detailFilm&id=<?= $film["id_film"]?>"><?= $film["titre"] ?></a></p>
     <?php        
          }
     ?>
