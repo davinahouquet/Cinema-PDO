@@ -46,9 +46,9 @@ option{
     color: var(--dark-blue);
 }
 
-.film-button{
+.cinema-button{
     background-color: rgba(137, 47, 44, 0.7);
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
 }
 /*---------- Landing Page ----------*/
@@ -59,7 +59,46 @@ option{
     align-items: center;
 }
 
+/* ----------Commun à toutes les pages d'ajout ---------- */
+.updateFilm, .addCasting, .addDirector, .addGenre, .addActor{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
+    box-shadow: 20px 25px 15px rgb(17, 17, 17);
+}
+
+/* Les input et les selects */
+input, select{
+    width: 200px;
+    height: 45px;
+    border-radius: 10px;
+    padding: 2px;
+    color: var(--dark-blue);  
+}
+
+input:hover{
+    color:#ffffff;
+    background: #919191;
+    cursor: pointer;
+}
+
+.lists-container{
+    width: 80%;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+
 /*---------- Page d'ajout d'un film ----------*/
+
+h1{
+    text-align: center;
+    margin: 15px;
+}
+
 .container-form{
     width: 100%;
     height: 60vh;
@@ -79,18 +118,6 @@ option{
     margin-top: 155px;
 }
 
-h1{
-    text-align: center;
-    margin: 15px;
-}
-
-input{
-    width: 200px;
-    height: 45px;
-    border-radius: 10px;
-    padding: 2px;
-    color: var(--dark-blue);
-}
 
 .submit{
     color: var(--dark-blue);
@@ -112,18 +139,6 @@ input{
     padding: 2px;
     color: var(--dark-blue);
 }
-/* .checked {
-    color: orange;
-}
-
-.stars-container{
-    display: flex;
-    flex-direction: row;
-}
-
-span{
-    margin: 5px;
-} */
 
 .form-input{
     display: flex;
@@ -135,38 +150,21 @@ span{
     padding-right: 10px;
 }
 
-/* ---------- Page d'ajout d'un genre ---------- */
-.addGenre{
-    width: 400px;
+.button-film-container{
+    width: 100%;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background: linear-gradient(to left top,#892F2C, #081530);
-    border-radius: 10px;
-    color: white;
+    flex-direction: row;
+    justify-content: right;
 }
 
-/* ---------- Page d'ajout d'un acteur ---------- */
-.addActor{
-    width: 400px;
+/* ---------- Page d'ajout d'un casting ---------- */
+.button-container{
+    width: 100%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    background: linear-gradient(to left top,#892F2C, #081530);
-    border-radius: 10px;
-    color: white;
+    margin: 10px;
 }
 
-/* ---------- Page d'ajout d'un réalisateur ---------- */
-select{
-    color: var(--dark-blue);
-}
-
-.updateFilm, .addCasting, .addDirector{
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background: linear-gradient(to left top,#892F2C, #081530);
-    border-radius: 10px;
+.button-casting{
+    cursor: pointer;
 }

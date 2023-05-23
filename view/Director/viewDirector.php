@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteDirector->rowCount() ?> directors</p>
-<button><a href="index.php?action=getAddDirector">Add Director</a></button>
+<button class="cinema-button"><a href="index.php?action=getAddDirector">Add Director</a></button>
 
 <table>
     <thead>
@@ -24,7 +24,7 @@
 </table>
 
 <?php
-$titre = "Liste des réalisateurs";
+$titre = "Directors";
 $titre_secondaire = "Liste des réalisateurs";
 $contenu = ob_get_clean();
 require "view/template.php";

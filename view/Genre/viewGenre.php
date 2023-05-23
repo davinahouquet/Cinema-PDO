@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteGenre->rowCount() ?> genres</p>
-<button><a href="index.php?action=getAddGenre">Add Genre</a></button>
+<button class="cinema-button"><a href="index.php?action=getAddGenre">Add Genre</a></button>
 
 <table>
     <thead>
@@ -22,7 +22,7 @@
 </table>
 
 <?php
-$titre = "Genres list";
+$titre = "Genres";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

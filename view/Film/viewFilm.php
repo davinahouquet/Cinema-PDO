@@ -5,12 +5,17 @@ ob_start();
 ?>
 
 <p>There are <?= $requete->rowCount() ?> movies</p>
-<button class="film-button"><a href="index.php?action=getAddFilm">Add Film</a></button>
-<button class="film-button"><a href="index.php?action=getAddCasting">Add Casting</a></button>
+
+<div class="lists-container">
+<div class="button-film-container">
+    <button class="cinema-button"><a href="index.php?action=getAddFilm">Add Film</a></button>
+    <button class="cinema-button"><a href="index.php?action=getAddCasting">Add Casting</a></button>
+</div>
+
 <table class="table-view-film">
     <thead>
         <tr>
-            <th>TITLE</th>
+            <th>TITLES</th>
         </tr>
     </thead>
     <tbody>
@@ -25,10 +30,10 @@ ob_start();
           <?php  } ?>
     </tbody>
 </table>
-
+</div>
 
 <?php
-$titre = "Liste des films";
+$titre = "Movies";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

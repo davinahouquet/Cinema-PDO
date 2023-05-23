@@ -59,9 +59,9 @@ ob_start();
 
             </select>
     </div>
-
-
-    <input type="submit" name="submitCasting" value="submit">
+    <div class="button-container">
+        <input type="submit" name="submitCasting" value="Submit" class="button-casting">
+    </div>
 </form>
 
 <?php

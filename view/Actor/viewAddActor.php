@@ -3,7 +3,7 @@
 ob_start();
 
 ?>
-
+<div class="container-form">
 
 <form enctype='multipart/form-data' action="index.php?action=addActor" method="post" class="addActor">
     
@@ -38,9 +38,9 @@ ob_start();
 
     </div>
 </form>
-
+</div>
 <?php
-$titre = "Ajouter acteur";
+$titre = "Add actor";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

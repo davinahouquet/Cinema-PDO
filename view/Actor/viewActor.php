@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteActor->rowCount() ?> actors</p>
-<button><a href="index.php?action=getAddActor">Add Actor</a></button>
+<button class="cinema-button"><a href="index.php?action=getAddActor">Add Actor</a></button>
 
 <table>
     <thead>
@@ -24,7 +24,7 @@
 </table>
 
 <?php
-$titre = "Liste des acteurs";
+$titre = "Actors";
 $titre_secondaire = "Liste des acteurs";
 $contenu = ob_get_clean();
 require "view/template.php";

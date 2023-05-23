@@ -3,7 +3,7 @@
 ob_start();
 
 ?>
-
+<div class="container-form">
 
 <form enctype='multipart/form-data' action="index.php?action=addRole" method="post" class="addFilm">
     
@@ -26,7 +26,7 @@ ob_start();
         <input type="submit" class="submit" name="submitRole" id="role">
     </div>
 </form>
-
+</div>
 <?php
 $titre = "Add a role";
 $contenu = ob_get_clean();

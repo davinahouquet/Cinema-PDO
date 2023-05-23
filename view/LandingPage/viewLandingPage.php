@@ -5,7 +5,7 @@
 </div>
 
 <?php
-$titre = "Landing Page";
+$titre = "Mooviz";
 $titre_secondaire = "Landing Page";
 $contenu = ob_get_clean();
 require "view/template.php";

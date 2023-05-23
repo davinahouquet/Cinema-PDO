@@ -77,7 +77,7 @@ class CinemaController {
             $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
             $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);
-            $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_NUMBER_INT);
             $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             if($titre !== false && $realisateur !== false && $genre !== false && $anneeSortie !== false && $duree !== false && $synopsis !== false && $note !== false && $affiche !== false){

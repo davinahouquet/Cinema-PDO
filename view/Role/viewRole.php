@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <p>There are <?= $requeteRole->rowCount() ?> roles</p>
-<button><a href="index.php?action=getAddRole">Add Role</a></button>
+<button class="cinema-button"><a href="index.php?action=getAddRole">Add Role</a></button>
 
 <table>
     <thead>
@@ -21,7 +21,7 @@
 </table>
 
 <?php
-$titre = "Liste des rôles";
+$titre = "Roles";
 $contenu = ob_get_clean();
 require "view/template.php";
 //Le require de fin permet d'injecter le contenu dans le template "squelette" > template.php

@@ -32,6 +32,6 @@ ob_start();
 </form>
 
 <?php
-$titre = "Actor";
+$titre = "Director details";
 $contenu = ob_get_clean();
 require "view/template.php";
