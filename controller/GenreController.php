@@ -8,7 +8,7 @@ class GenreController {
     //Lister les genres
     public function listGenres(){
         $pdo = Connect::seConnecter();
-        $requeteGenre = $pdo->query("SELECT genre.id_genre, genre.nom_genre FROM genre");
+        $requeteGenre = $pdo->query("SELECT genre.id_genre, genre.nom_genre FROM genre ORDER BY nom_genre ASC");
         $requeteGenre->execute();
         require "view/Genre/viewGenre.php";
     }

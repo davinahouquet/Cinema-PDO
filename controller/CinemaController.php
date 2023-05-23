@@ -18,6 +18,7 @@ class CinemaController {
         FROM film, realisateur, personne
         WHERE film.id_realisateur = realisateur.id_realisateur
         AND realisateur.id_personne = personne.id_personne
+        ORDER BY titre ASC
         "); //On exécute la requête de notre choix
         $requete->execute();
         require "view/Film/viewFilm.php"; //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")

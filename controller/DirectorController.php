@@ -12,6 +12,7 @@ class DirectorController {
             SELECT id_realisateur, prenom, nom
             FROM realisateur r
             INNER JOIN personne ON personne.id_personne = r.id_personne
+            ORDER BY prenom ASC
         "); //On exécute la requête de notre choix
         $requeteDirector->execute();
         require ("view/Director/viewDirector.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")

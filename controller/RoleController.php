@@ -11,6 +11,7 @@ class RoleController {
         $requeteRole = $pdo->query(" 
         SELECT id_role, role
         FROM role
+        ORDER BY role ASC
         "); //On exécute la requête de notre choix
         $requeteRole->execute();
         require ("view/Role/viewRole.php"); //On relie par un "require" la vue qui nous intéresse (située dans le dossier "view")
