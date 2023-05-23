@@ -3,6 +3,7 @@
 ob_start();
 
 $film = $requete->fetch();
+// var_dump($film);die;
 ?>
 
 <div class="container-form">
@@ -13,7 +14,7 @@ $film = $requete->fetch();
     
     <div class="form-input">
         <label for="titre">Title :</label>
-        <input name="titre" id="titre" type="text" placeholder="New title" required>
+        <input name="titre" id="titre" type="text" placeholder="New title" required value='<?= $film["titre"] ?>'>
     </div>
     <div class="form-input">
         <label for="realisateur">Director :</label>
@@ -33,7 +34,7 @@ $film = $requete->fetch();
     <div class="form-input">
         <label>Genre :</label>
         
-        <select name="genre" placeholder="Genre" class="select">
+        <select name="genre" class="select">
 
             <?php
 
@@ -50,23 +51,23 @@ $film = $requete->fetch();
 
     <div class="form-input">
         <label>Release date :</label>
-        <input name="anneeSortie" id="dateSortie" type="number" placeholder="Released in..." min="1" max="3000" required>
+        <input name="anneeSortie" id="dateSortie" type="number" min="1" max="3000" required value='<?= $film["anneeSortie"] ?>'>
     </div>
     <div class="form-input">
         <label>Duration (min) :</label>
-        <input name="duree" id="duree" type="number" min="1" placeholder="min"  required>
+        <input name="duree" id="duree" type="number" min="1" value='<?= $film["duree"] ?>' required>
     </div>
     <div class="form-input">
         <label>Plot :</label>
-        <input name="synopsis" id="synopsis" type="text" placeholder="Plot"  required>
+        <input name="synopsis" id="synopsis" type="text" value='<?= $film["synopsis"] ?>'  required>
     </div>
     <div class="form-input">
         <label>Image :</label>
-        <input name="affiche" id="affiche" type="file" placeholder="Download a file"  required>
+        <input name="affiche" id="affiche" type="file" value='<?= $film["affiche"] ?>' required>
     </div>
     <div class="form-input">
         <label for="note">Note :</label>
-        <input type="number" name="note" id="note" min="1" max="5"  required>
+        <input type="number" name="note" id="note" min="1" max="5"  value='<?= $film["note"] ?>'required>
        
         
     </div>

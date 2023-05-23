@@ -168,13 +168,14 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
 
-        $requete = $pdo->query(" 
+        $requete = $pdo->prepare(" 
         SELECT film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
         FROM film, realisateur, personne
         WHERE film.id_realisateur = realisateur.id_realisateur
         AND realisateur.id_personne = personne.id_personne
+        AND film.id_film = :id
         "); //On exécute la requête de notre choix
-        $requete->execute();
+        $requete->execute(["id" => $id]);
 
         $requeteDirector = $pdo->query("SELECT id_realisateur, prenom, nom
                                 FROM realisateur r
@@ -219,8 +220,12 @@ class CinemaController {
                 //     "genre" => $genre,
                 //     "id" => $id
                 // ]);
+
+
             }
+            header("Location: index.php?action=detailFilm&id= $id");
         }
+        
         require("view/Film/viewUpdateFilm.php");
     }
 

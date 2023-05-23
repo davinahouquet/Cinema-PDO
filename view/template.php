@@ -29,9 +29,9 @@
                 <li><a href="index.php?action=listRoles">ROLES</a></li>
                 <li><a href="index.php?action=listActors">ACTORS</a></li>
                 <li><a href="index.php?action=listDirectors">DIRECTORS</a></li>
-                <li>ADD INFOS
+                <li>
                     <select onchange="location = this.value;">
-                        <option></option>
+                        <option>--ADD INFOS</option>
                         <option value="index.php?action=getAddFilm">ADD MOVIES</option>
                         <option value="index.php?action=getAddGenre">ADD GENRES</option>
                         <option value="index.php?action=getAddRole">ADD ROLES</option>
