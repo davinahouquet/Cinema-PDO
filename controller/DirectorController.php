@@ -78,4 +78,20 @@ class DirectorController {
         }
         require("view/LandingPage/viewLandingPage.php");
     }
+
+    //Supprimer un réalisateur
+    public function deleteDirector($id){
+
+        if(isset($_POST["deleteDirector"])){
+
+            $pdo = Connect::seConnecter();
+
+            $requeteDeleteDirector = $pdo->prepare("DELETE FROM film WHERE id_realisateur = :id");
+            $requeteDeleteDirector->execute(["id"=>$id]);
+
+            $requeteDeleteDirector1 = $pdo->prepare("DELETE FROM realisateur WHERE id_realisateur = :id");
+            $requeteDeleteDirector1->execute(["id"=>$id]);
+        }
+        require("view/LandingPage/viewLandingPage.php");
+    }
 }

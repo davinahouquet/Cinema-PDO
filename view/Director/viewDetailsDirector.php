@@ -27,6 +27,9 @@ ob_start();
     ?>
 </div>
 
+<form action="index.php?action=deleteDirector&id=<?=$realisateur["id_realisateur"]?>" method="post">
+    <input type="submit" name="deleteDirector" value="Delete this Director">
+</form>
 
 <?php
 $titre = "Actor";
