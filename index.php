@@ -42,6 +42,7 @@ if(isset($_GET["action"])){
         case "getAddGenre" : $ctrlGenre->getAddGenre(); break;
         case "addGenre" : $ctrlGenre->addGenre(); break;
         case "deleteGenre" : $ctrlGenre->deleteGenre($id);break;
+        case "updateGenre" : $ctrlGenre->updateGenre($id); break;
 
         //ROLE
         case "listRoles" : $ctrlRole->listRoles(); break;
@@ -49,6 +50,7 @@ if(isset($_GET["action"])){
         case "getAddRole" : $ctrlRole->getAddRole(); break;
         case "addRole" : $ctrlRole->addRole(); break;
         case "deleteRole" : $ctrlRole->deleteRole($id);break;
+        // case "updateRole" : $ctrlRole->updateRole($id); break;
 
         //ACTEUR
         case "listActors" : $ctrlActor->listActors(); break;
@@ -56,6 +58,7 @@ if(isset($_GET["action"])){
         case "getAddActor" : $ctrlActor->getAddActor(); break;
         case "addActor" : $ctrlActor->addActor(); break;
         case "deleteActor" : $ctrlActor->deleteActor($id); break;
+        // case "updateActor" : $ctrlGenre->updateActor($id); break;
 
         //REALISATEUR
         case "listDirectors" : $ctrlDirector->listDirectors(); break;
@@ -63,6 +66,6 @@ if(isset($_GET["action"])){
         case "getAddDirector" : $ctrlDirector->getAddDirector(); break;
         case "addDirector" : $ctrlDirector->addDirector(); break;
         case "deleteDirector" : $ctrlDirector->deleteDirector($id); break;
-
+        // case "updateDirector" : $ctrlGenre->updateDirector($id); break;
     }
 }

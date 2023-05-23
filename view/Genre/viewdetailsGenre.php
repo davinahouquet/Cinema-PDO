@@ -23,6 +23,8 @@ ob_start();
     </form>
 </div>
 
+    <a href="index.php?action=updateGenre&id=<?= $genre['id_genre'] ?>"><input type="submit" value="Update Genre"></a>
+
 
 <?php
 $titre = "Genre details";

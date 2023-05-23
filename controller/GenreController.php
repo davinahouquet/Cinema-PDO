@@ -64,6 +64,26 @@ class GenreController {
         }
          require("view/LandingPage/viewLandingPage.php");
     }
+
+    //Modifier un genre
+    public function updateGenre($id){
+        $pdo = Connect::seConnecter();
+        $requeteGenre = $pdo->prepare("SELECT id_genre, nom_genre FROM genre WHERE id_genre = :id"); //IMPORTANT!!! Penser à mettre en prepare et à selectionner l'élément en question grâce à l'id (sinon ça selectionne tout de la liste)
+        $requeteGenre->execute(["id"=>$id]);
+
+        if(isset($_POST["updateGenre"])){  
+
+            $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            if($genre !== false){
+
+                $pdo = Connect::seConnecter(); 
+                $requeteUpdateGenre = $pdo->prepare("UPDATE genre SET nom_genre = :genre WHERE id_genre = :id");
+                $requeteUpdateGenre->execute(["id" => $id, "genre" => $genre]);
+            }
+        }
+        header("Location: index.php?action=detailsGenre&id=$id");  
+        require("view/Genre/viewUpdateGenre.php");
+    }
 }
 
 
