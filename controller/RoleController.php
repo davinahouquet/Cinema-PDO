@@ -30,7 +30,7 @@ class RoleController {
     //Afficher les détails d'un rôle
     public function detailsRole($id){
         $pdo = Connect::seConnecter();
-            $requeteDetailsRole = $pdo->prepare("SELECT role FROM role WHERE id_role = :id");
+            $requeteDetailsRole = $pdo->prepare("SELECT id_role, role FROM role WHERE id_role = :id");
             $requeteDetailsRole->execute(["id" => $id]);
             
             $requeteActeur = $pdo->prepare("SELECT f.titre, p.prenom, p.nom
@@ -56,4 +56,17 @@ class RoleController {
         }
         require("view/LandingPage/viewLandingPage.php");
     }
+
+    //Supprimer role
+    public function deleteRole($id){
+
+        if(isset($_POST["deleteRole"])){
+
+                $pdo = Connect::seConnecter(); 
+                $requeteDeleteRole = $pdo->prepare("DELETE FROM role WHERE id_role = :id ");
+                $requeteDeleteRole->execute(["id" => $id]);
+        }      
+        require("view/LandingPage/viewLandingPage.php");
+    }
+    
 }

@@ -20,6 +20,9 @@ ob_start();
     ?>
 </div>
 
+<form action="index.php?action=deleteRole&id=<?=$role["id_role"]?>" method="post">
+    <input type="submit" name="deleteRole">
+</form>
 
 <?php
 $titre = "Role";
