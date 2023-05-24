@@ -99,4 +99,41 @@ class ActorController {
         }
         require("view/LandingPage/viewLandingPage.php");
     }
+
+    // Update actor $requeteActor
+    public function updateActor($id){
+        $pdo = Connect::seConnecter();
+        $requeteActor = $pdo->prepare("SELECT id_acteur, p.prenom, p.nom, p.sexe, p.dateNaissance
+                                        FROM acteur a
+                                        JOIN personne p ON p.id_personne = a.id_personne
+                                        WHERE a.id_acteur = :id");
+        $requeteActor->execute(["id"=>$id]);
+
+        if(isset($_POST["updateActor"])){  
+
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($prenom && $nom && $sexe && $dateNaissance){
+
+                $pdo = Connect::seConnecter(); 
+                $requeteUpdateActor = $pdo->prepare("UPDATE personne 
+                INNER JOIN acteur ON acteur.id_personne = personne.id_personne
+                SET nom = :nom, prenom = :prenom, sexe = :sexe, dateNaissance = :dateNaissance
+                WHERE acteur.id_acteur = :id                
+                ");
+                $requeteUpdateActor->execute([
+                    "nom" => $nom,
+                    "prenom" => $prenom,
+                    "sexe" => $sexe,
+                    "dateNaissance" => $dateNaissance,
+                    "id" => $id                    
+                ]);
+            }
+        }
+        require("view/Actor/viewUpdateActor.php");
+    }
+
 }

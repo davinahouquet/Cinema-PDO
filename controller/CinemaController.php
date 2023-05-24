@@ -68,22 +68,45 @@ class CinemaController {
 
     //Ajouter un film
     public function addFilm(){
-        $pdo = Connect::seConnecter();
-        if(isset($_POST["submitFilm"])){
+
+        if(isset($_POST["submitFilm"])){   
+            // var_dump($_POST["submitFilm"]);
+            if(isset($_FILES["affiche"])){ // Le nom de l'input dans viewAddFilm
+                $tmpNom = $_FILES["affiche"]["tmp_name"];
+                $nom = $_FILES["affiche"]["name"];
+                $taille = $_FILES["affiche"]["size"];
+                $error = $_FILES["affiche"]["error"];
+            }
+            // var_dump($_FILES["affiche"]);
+            $tabExtension = explode('.', $nom); //explode — Scinde une chaîne de caractères en segments-https://www.php.net/manual/fr/function.explode.php
+            $extension = strtolower(end($tabExtension));
+            $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+            $maxTaille = 1000000;
+
+            /* Les extensions + taille de fichier autorisées */
+            if(in_array($extension, $extensions) && $taille <= $maxTaille && $error == 0){
+                $uniqueName = uniqid('', true);
+                $fileUnique = $uniqueName . "." . $extension;
+                move_uploaded_file($tmpNom, './public/img/'.$fileUnique); 
+                $afficheChemin = "./public/img/upload" . $fileUnique;
+            }
+            /* S'il n'y pas de fichier (NULL autorisé dans la BDD)*/
+            else {
+                $afficheChemin = NULL;
+            }
 
             $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $anneeSortie = filter_input(INPUT_POST, "anneeSortie", FILTER_SANITIZE_NUMBER_INT);
             $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
             $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);
-            $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_NUMBER_INT);
-            $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-            if($titre !== false && $realisateur !== false && $genre !== false && $anneeSortie !== false && $duree !== false && $synopsis !== false && $note !== false && $affiche !== false){
-
+            $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);            
+            $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_NUMBER_INT);
+            
+                
+                $pdo = Connect::seConnecter();
                 $requeteAjouterFilm = $pdo->prepare("INSERT INTO film (titre, anneeSortie, duree, synopsis, note, affiche, id_realisateur)
-                                                    VALUES(:titre, :anneeSortie, :duree, :synopsis, :note, :affiche, :realisateur)");
+                                                    VALUES(:titre, :anneeSortie, :duree, :synopsis, :note, :afficheChemin, :realisateur)");
 
 
                 $requeteAjouterFilm -> execute([
@@ -92,7 +115,7 @@ class CinemaController {
                     "duree" => $duree,
                     "synopsis" => $synopsis,
                     "note" => $note,
-                    "affiche" => $affiche,
+                    "afficheChemin" => $afficheChemin,
                     "realisateur" => $realisateur
                 ]);
                 
@@ -100,8 +123,7 @@ class CinemaController {
                 SELECT LAST_INSERT_ID(), :id_genre");
 
                 $requeteAddGenre->execute(["id_genre"=> $genre]);
-
-            }
+        
         }
         require("view/LandingPage/viewLandingPage.php");
     }

@@ -58,7 +58,7 @@ if(isset($_GET["action"])){
         case "getAddActor" : $ctrlActor->getAddActor(); break;
         case "addActor" : $ctrlActor->addActor(); break;
         case "deleteActor" : $ctrlActor->deleteActor($id); break;
-        // case "updateActor" : $ctrlGenre->updateActor($id); break;
+        case "updateActor" : $ctrlActor->updateActor($id); break;
 
         //REALISATEUR
         case "listDirectors" : $ctrlDirector->listDirectors(); break;

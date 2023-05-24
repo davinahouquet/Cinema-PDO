@@ -31,6 +31,8 @@ ob_start();
      <input type="submit" name="deleteActor" value="Delete this Actor">    
 </form>
 
+<a href="index.php?action=updateActor&id=<?= $acteur["id_acteur"] ?>"><input type="submit" value="Update"></a>
+
 <?php
 $titre = "Actor details";
 $contenu = ob_get_clean();
