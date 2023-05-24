@@ -95,4 +95,40 @@ class DirectorController {
         }
         require("view/LandingPage/viewLandingPage.php");
     }
+
+    // Mettre à jour réalisateur
+    public function updateDirector($id){
+        $pdo = Connect::seConnecter();
+        $requeteDirector = $pdo->prepare("SELECT id_realisateur, p.prenom, p.nom, p.sexe, p.dateNaissance
+                                        FROM realisateur r
+                                        JOIN personne p ON p.id_personne = r.id_personne
+                                        WHERE r.id_realisateur = :id");
+        $requeteDirector->execute(["id"=>$id]);
+
+        if(isset($_POST["updateDirector"])){  
+
+            $nom = filter_input(INPUT_POST, "nom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $dateNaissance = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if($prenom && $nom && $sexe && $dateNaissance){
+
+                $pdo = Connect::seConnecter(); 
+                $requeteUpdateDirector = $pdo->prepare("UPDATE personne 
+                INNER JOIN realisateur ON realisateur.id_personne = personne.id_personne
+                SET nom = :nom, prenom = :prenom, sexe = :sexe, dateNaissance = :dateNaissance
+                WHERE realisateur.id_realisateur = :id                
+                ");
+                $requeteUpdateDirector ->execute([
+                    "nom" => $nom,
+                    "prenom" => $prenom,
+                    "sexe" => $sexe,
+                    "dateNaissance" => $dateNaissance,
+                    "id" => $id                    
+                ]);
+            }
+        }
+        require("view/Director/viewUpdateDirector.php");
+    }
 }

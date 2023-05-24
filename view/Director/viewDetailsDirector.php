@@ -31,6 +31,8 @@ ob_start();
     <input type="submit" name="deleteDirector" value="Delete this Director">
 </form>
 
+<a href="index.php?action=updateDirector&id=<?= $realisateur["id_realisateur"] ?>"><input type="submit" value="Update"></a>
+
 <?php
 $titre = "Director details";
 $contenu = ob_get_clean();

@@ -66,6 +66,6 @@ if(isset($_GET["action"])){
         case "getAddDirector" : $ctrlDirector->getAddDirector(); break;
         case "addDirector" : $ctrlDirector->addDirector(); break;
         case "deleteDirector" : $ctrlDirector->deleteDirector($id); break;
-        // case "updateDirector" : $ctrlGenre->updateDirector($id); break;
+        case "updateDirector" : $ctrlDirector->updateDirector($id); break;
     }
 }
