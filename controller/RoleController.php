@@ -73,20 +73,18 @@ class RoleController {
     //Modifier un role
     public function updateRole($id){
         $pdo = Connect::seConnecter();
-        $requeteGenre = $pdo->prepare("SELECT id_role, role FROM role WHERE id_role = :id");
-        $requeteGenre->execute(["id"=>$id]);
+        $requeteRole = $pdo->prepare("SELECT id_role, role FROM role WHERE id_role = :id");
+        $requeteRole->execute(["id"=>$id]);
 
         if(isset($_POST["updateRole"])){  
 
             $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             if($role !== false){
-
                 $pdo = Connect::seConnecter(); 
-                $requeteUpdateGenre = $pdo->prepare("UPDATE role SET role = :role WHERE id_role = :id");
-                $requeteUpdateGenre->execute(["id" => $id, "role" => $role]);
+                $requeteUpdateRole = $pdo->prepare("UPDATE role SET role = :role WHERE id_role = :id");
+                $requeteUpdateRole->execute(["id" => $id, "role" => $role]);
             }
         }
-        header("Location: index.php?action=updateRole&id=$id");  
-        require("view/Genre/viewUpdateRole.php");
+        require("view/Role/viewUpdateRole.php");
     }
 }

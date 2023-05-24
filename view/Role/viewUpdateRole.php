@@ -13,7 +13,7 @@ $role = $requeteRole->fetch();
     
     <div class="form-input">
         <label for="role">Name :</label>
-        <input name="role" type="text"required value="<?= $role["role"] ?>">
+        <input name="role" type="text" required value="<?= $role["role"] ?>">
     </div>
 
     <div class="button-input">
