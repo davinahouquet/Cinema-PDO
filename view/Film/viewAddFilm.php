@@ -6,7 +6,7 @@ ob_start();
 
 <div class="container-form">
 
-<form action="index.php?action=addFilm" method="POST" class="addFilm">
+<form enctype="multipart/form-data" action="index.php?action=addFilm" method="POST" class="addFilm">
     
     <h1>Add a movie</h1>
     

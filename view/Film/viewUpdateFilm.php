@@ -8,7 +8,7 @@ $film = $requete->fetch();
 
 <div class="container-form">
 
-<form action="index.php?action=updateFilm&id=<?=$film["id_film"]?>" method="POST" class="updateFilm">
+<form enctype="multipart/form-data" action="index.php?action=updateFilm&id=<?=$film["id_film"]?>" method="POST" class="updateFilm">
     
     <h1>Update this movie</h1>
     

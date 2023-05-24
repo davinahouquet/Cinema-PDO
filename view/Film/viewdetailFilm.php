@@ -37,7 +37,18 @@ $genres = $requeteGenre->fetchAll();
                     <?php
                     }
                     ?>
-                    <td><img src='<?= $film["affiche"]?>'></td>
+                    <td>
+                        <div class="affiche">
+                            <?php
+                                if($film["affiche"] == NULL){
+                                    echo "Pas d'affiche";
+                                }
+                                else{
+                                    echo "<img src=". $film["affiche"] .">";
+                                }
+                            ?>
+                        </div>
+                    </td>
                 </tr>
           <?php  } ?>
     </tbody>
