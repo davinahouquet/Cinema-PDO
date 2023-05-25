@@ -116,11 +116,13 @@ class CinemaController {
                     "realisateur" => $realisateur
                 ]);
                     
-                $requeteAddGenre = $pdo->prepare("INSERT INTO categoriser(id_film, id_genre)
-                SELECT LAST_INSERT_ID(), :id_genre");
-            
-                $requeteAddGenre->execute(["id_genre"=> $genre]);
+                $selectedGenres = $_POST['genre'];
+
+                foreach ($selectedGenres as $genre) {
+                    $requeteAddGenre = $pdo->prepare("INSERT INTO categoriser (id_film, id_genre) VALUES (LAST_INSERT_ID(), :id_genre)");
+                    $requeteAddGenre->execute(["id_genre" => $genre]);
                 }
+            }
         }
         require("view/LandingPage/viewLandingPage.php");
     }
@@ -267,8 +269,8 @@ class CinemaController {
                 }
             }
         }
-        require("view/Film/viewUpdateFilm.php");
         // header("Location: index.php?action=detailFilm&id=$id");
+        require("view/Film/viewUpdateFilm.php");
     }
     
 } //Fermeture classe

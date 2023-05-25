@@ -32,7 +32,7 @@ ob_start();
     <div class="form-input">
         <label>Genre :</label>
         
-        <select name="genre" type="text" placeholder="Genre" class="select">
+        <select name="genre[]" type="text" placeholder="Genre" class="select" multiple>
 
             <?php
 
