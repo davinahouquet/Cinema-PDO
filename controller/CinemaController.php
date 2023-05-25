@@ -259,15 +259,20 @@ class CinemaController {
                     "id" => $id
                 ]);
 
-                //Update genre
-                $requeteUpdateGenre = $pdo->prepare("UPDATE categoriser SET id_genre = :genre WHERE id_film = :id");
-                $requeteUpdateGenre->execute([
-                    "genre" => $genre,
-                    "id" => $id
-                ]);
+                // Supprimer les genres précédents
+                $requeteRemoveGenres = $pdo->prepare("DELETE FROM categoriser WHERE id_film = :id");
+                $requeteRemoveGenres->execute(["id" => $id]);
 
+                //Update genre
+                $selectedGenres = $_POST["genre"];
+                
+                foreach ($selectedGenres as $genre) {
+
+                    $requeteUpdateGenre = $pdo->prepare("INSERT INTO categoriser (id_film, id_genre) VALUES (:id_film, :id_genre)");
+                    $requeteUpdateGenre->execute(["id_film" => $id, "id_genre" => $genre]);
                 }
             }
+        }
         }
         // header("Location: index.php?action=detailFilm&id=$id");
         require("view/Film/viewUpdateFilm.php");

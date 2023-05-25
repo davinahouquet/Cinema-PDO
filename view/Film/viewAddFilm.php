@@ -36,7 +36,7 @@ ob_start();
 
             <?php
 
-                foreach($requeteGenre->fetchAll() as $genre){
+                foreach($requeteUpdateGenre->fetchAll() as $genre){
             ?>
                 <option value="<?= $genre["id_genre"]?>"><?= $genre["nom_genre"]?></option>
             <?php
