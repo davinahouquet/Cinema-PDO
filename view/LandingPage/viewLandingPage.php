@@ -1,9 +1,14 @@
 <?php ob_start(); ?>
-<div class="landing-page-title">
-    <h1>Movie night? Think about us</h1>
-    <h2>Infos about 20 movies with some clicks</h2>
-</div>
 
+<section class="landing-page">
+    <div class="landing-page-title">
+        <h1>Movie night? Think about us</h1>
+        <h2 class="h2">Infos about 20 movies with some clicks</h2>
+    </div>
+    <div class="landing-page-image-container">
+        <img src="public/img/uma-thurman.png" class="landing-page-image">
+    </div>
+</section>
 <?php
 $titre = "Mooviz";
 $titre_secondaire = "Landing Page";

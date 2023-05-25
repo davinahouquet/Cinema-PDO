@@ -21,6 +21,7 @@
     <section>
         <nav class="navigation">
             <div class="logo-title">
+                <img src="public/img/Logo.png" width="30">
                 <p><a href="index.php?action=landingPage">Mooviz</a></p>
             </div>
             <ul class="navigation">
