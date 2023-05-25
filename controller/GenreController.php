@@ -81,7 +81,7 @@ class GenreController {
                 $requeteUpdateGenre->execute(["id" => $id, "genre" => $genre]);
             }
         }
-        header("Location: index.php?action=detailsGenre&id=$id");  
+        // header("Location: index.php?action=detailsGenre&id=$id");  
         require("view/Genre/viewUpdateGenre.php");
     }
 }

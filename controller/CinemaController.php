@@ -102,24 +102,24 @@ class CinemaController {
                 $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);            
                 $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_NUMBER_INT);
             
-                    $requeteAjouterFilm = $pdo->prepare("INSERT INTO film (titre, anneeSortie, duree, synopsis, note, affiche, id_realisateur)
-                                                        VALUES(:titre, :anneeSortie, :duree, :synopsis, :note, :afficheChemin, :realisateur)");
+                $requeteAjouterFilm = $pdo->prepare("INSERT INTO film (titre, anneeSortie, duree, synopsis, note, affiche, id_realisateur)
+                                                    VALUES(:titre, :anneeSortie, :duree, :synopsis, :note, :afficheChemin, :realisateur)");
             
             
-                    $requeteAjouterFilm -> execute([
-                        "titre" => $titre,
-                        "anneeSortie" => $anneeSortie,
-                        "duree" => $duree,
-                        "synopsis" => $synopsis,
-                        "note" => $note,
-                        "afficheChemin" => $afficheChemin,
-                        "realisateur" => $realisateur
-                    ]);
+                $requeteAjouterFilm -> execute([
+                    "titre" => $titre,
+                    "anneeSortie" => $anneeSortie,
+                    "duree" => $duree,
+                    "synopsis" => $synopsis,
+                    "note" => $note,
+                    "afficheChemin" => $afficheChemin,
+                    "realisateur" => $realisateur
+                ]);
                     
-                    $requeteAddGenre = $pdo->prepare("INSERT INTO categoriser(id_film, id_genre)
-                    SELECT LAST_INSERT_ID(), :id_genre");
+                $requeteAddGenre = $pdo->prepare("INSERT INTO categoriser(id_film, id_genre)
+                SELECT LAST_INSERT_ID(), :id_genre");
             
-                    $requeteAddGenre->execute(["id_genre"=> $genre]);
+                $requeteAddGenre->execute(["id_genre"=> $genre]);
                 }
         }
         require("view/LandingPage/viewLandingPage.php");
@@ -186,68 +186,91 @@ class CinemaController {
     
     //Mettre à jour les informations d'un film
     public function updateFilm($id){
-
+        
         $pdo = Connect::seConnecter();
-
+        // D'abord on affiche les infos déjà existantes grâce à query
         $requete = $pdo->prepare(" 
-        SELECT film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
-        FROM film, realisateur, personne
-        WHERE film.id_realisateur = realisateur.id_realisateur
-        AND realisateur.id_personne = personne.id_personne
-        AND film.id_film = :id
+            SELECT film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
+            FROM film, realisateur, personne
+            WHERE film.id_realisateur = realisateur.id_realisateur
+            AND realisateur.id_personne = personne.id_personne
+            AND film.id_film = :id
         ");
+                    
         $requete->execute(["id" => $id]);
-
+        
         $requeteDirector = $pdo->query("SELECT id_realisateur, prenom, nom
-                                FROM realisateur r
-                                INNER JOIN personne ON personne.id_personne = r.id_personne
+                                        FROM realisateur r
+                                        INNER JOIN personne ON personne.id_personne = r.id_personne
         ");   
         $requeteDirector->execute();
-
+        
         $requeteGenre = $pdo->query("SELECT *
-                                FROM genre");
+                                            FROM genre");
         $requeteGenre-> execute();
 
-        if(isset($_POST["submitUpdate"])){
+        // Ensuite, seulement si l'action d'update est appelée on execute
+        if(isset($_POST["updateFilm"])){   
+                 
+            if(isset($_FILES["affiche"])){ // Le nom de l'input dans viewUpdateFilm
+                $tmpName = $_FILES["affiche"]["tmp_name"];
+                $name = $_FILES["affiche"]["name"];
+                $size = $_FILES["affiche"]["size"];
+                $error = $_FILES["affiche"]["error"];
+                $tabExtension = explode(".", $name); //explode — Scinde une chaîne de caractères en segments-https://www.php.net/manual/fr/function.explode.php
+                $extension = strtolower(end($tabExtension)); //Tout en minuscule
+                $extensions = ["jpg", "png", "jpeg"];
+                $maxTaille = 4000000;
+                /* Les extensions + taille de fichier autorisées */
+                if(in_array($extension, $extensions) && $size <= $maxTaille && $error == 0){
+                    $uniqueName = uniqid("", true);
+                    $fileUnique = $uniqueName . "." . $extension;
+                    move_uploaded_file($tmpName, "./public/img/".$fileUnique); 
+                    $afficheChemin = "./public/img/" . $fileUnique;
+                }         
+                else {
+                    /* S'il n'y pas de fichier (NULL autorisé dans la BDD)*/
+                    $afficheChemin = NULL;
+                }
 
-    
-            $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $anneeSortie = filter_input(INPUT_POST, "anneeSortie", FILTER_SANITIZE_NUMBER_INT);
-            $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
-            $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);
-            $affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $genre = filter_input(INPUT_POST, "genre", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $anneeSortie = filter_input(INPUT_POST, "anneeSortie", FILTER_SANITIZE_NUMBER_INT);
+                $duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
+                $synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);            
+                $realisateur = filter_input(INPUT_POST, "realisateur", FILTER_SANITIZE_NUMBER_INT);
 
-            if($titre !== false && $anneeSortie !== false && $duree !== false && $synopsis !== false && $note !== false && $affiche !== false && $realisateur){
-                            
+                if($titre !== false && $anneeSortie !== false && $duree !== false && $synopsis !== false && $note !== false && $realisateur){
+
+                                
                 //Update Film
-                $requeteUpdateFilm = $pdo->prepare("UPDATE film SET titre = :titre, anneeSortie = :anneeSortie, duree = :duree, synopsis = :synopsis,affiche = :affiche, note = :note, id_realisateur = :realisateur WHERE id_film = :id");
+                $requeteUpdateFilm = $pdo->prepare("UPDATE film SET titre = :titre, anneeSortie = :anneeSortie, duree = :duree, synopsis = :synopsis, affiche = :afficheChemin, note = :note, id_realisateur = :realisateur WHERE id_film = :id");
                 $requeteUpdateFilm->execute([
                     "titre" => $titre,
                     "anneeSortie" => $anneeSortie,
                     "duree" => $duree,
                     "synopsis" => $synopsis,
-                    "affiche" => $affiche,
+                    "afficheChemin" => $afficheChemin,
                     "note" => $note,
                     "realisateur" => $realisateur,
                     "id" => $id
                 ]);
-                // //Update genre
+
+                //Update genre
                 $requeteUpdateGenre = $pdo->prepare("UPDATE categoriser SET id_genre = :genre WHERE id_film = :id");
                 $requeteUpdateGenre->execute([
                     "genre" => $genre,
                     "id" => $id
                 ]);
 
+                }
             }
-            header("Location: index.php?action=detailFilm&id= $id");
         }
-        
         require("view/Film/viewUpdateFilm.php");
+        // header("Location: index.php?action=detailFilm&id=$id");
     }
-
+    
 } //Fermeture classe
 
 

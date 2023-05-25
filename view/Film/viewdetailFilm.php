@@ -54,12 +54,10 @@ $genres = $requeteGenre->fetchAll();
     </tbody>
 </table>
 
-<form method="post" action="index.php?action=updateFilm&id=<?= $film["id_film"]?>" class="button">
-    <input type="submit" name="updateFilm" value="Update this movie">
-</form>
+<a href="index.php?action=updateFilm&id=<?= $film["id_film"]?>"><input class="button" type="submit" value="Update this movie"></a>
 
-<form method="post" action="index.php?action=deleteFilm&id=<?= $film["id_film"]?>" class="button">
-    <input type="submit" name="deleteFilm" value="Delete this movie">
+<form method="post" action="index.php?action=deleteFilm&id=<?= $film["id_film"]?>">
+    <input class="button" type="submit" name="deleteFilm" value="Delete this movie">
 </form>
 
 <?php

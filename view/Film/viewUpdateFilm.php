@@ -63,7 +63,7 @@ $film = $requete->fetch();
     </div>
     <div class="form-input">
         <label>Image :</label>
-        <input name="affiche" id="affiche" type="file" value='<?= $film["affiche"] ?>' required>
+        <input name="affiche" type="file" value='<?= $film["affiche"] ?>' required>
     </div>
     <div class="form-input">
         <label for="note">Note :</label>
@@ -72,7 +72,7 @@ $film = $requete->fetch();
         
     </div>
     <div class="button-input">
-        <input name="submitUpdate" value="Update" id="submitUpdate" type="submit" class="submit"  required>
+        <input name="updateFilm" value="Update" type="submit" class="submit"  required>
     </div>
 </form>
 </div>
