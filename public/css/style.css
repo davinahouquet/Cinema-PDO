@@ -90,6 +90,27 @@ option{
     right: 0;
     top:0;
 }
+
+/* View Film (list) */
+
+.lists-container{
+    width: 80%;
+    display: flex;
+    justify-content:left;
+    flex-wrap: wrap;
+    margin-left :50px;
+}
+/* 
+.viewFilm-img-container{
+    position: relative;
+} */
+
+.viewFilm-img{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
 /* ----------Commun à toutes les pages d'ajout ---------- */
 .updateFilm, .addCasting, .addDirector, .addGenre, .addActor{
     width: 400px;
@@ -114,13 +135,6 @@ input:hover{
     color:#ffffff;
     background: #919191;
     cursor: pointer;
-}
-
-.lists-container{
-    width: 80%;
-    display: flex;
-    justify-content:center;
-    flex-wrap: wrap;
 }
 
 /*---------- Page d'ajout d'un film ----------*/

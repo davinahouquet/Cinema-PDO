@@ -6,16 +6,16 @@ ob_start();
 
 <p>There are <?= $requete->rowCount() ?> movies</p>
 
-<div class="lists-container">
 <div class="button-film-container">
     <button class="cinema-button"><a href="index.php?action=getAddFilm">Add Film</a></button>
     <button class="cinema-button"><a href="index.php?action=getAddCasting">Add Casting</a></button>
 </div>
-
-<table class="table-view-film">
-    <thead>
-        <tr>
-            <th>TITLES</th>
+<div class="lists-container">
+    
+    <table class="table-view-film">
+        <thead>
+            <tr>
+                <th>TITLES</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +31,9 @@ ob_start();
     </tbody>
 </table>
 </div>
-
+<div class="viewFilm-img-container">
+    <img src="public/img/Scarface-PNG-Image.png" class="viewFilm-img">
+</div>
 <?php
 $titre = "Movies";
 $contenu = ob_get_clean();

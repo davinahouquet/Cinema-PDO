@@ -93,6 +93,7 @@ class DirectorController {
             $requeteDeleteDirector1 = $pdo->prepare("DELETE FROM realisateur WHERE id_realisateur = :id");
             $requeteDeleteDirector1->execute(["id"=>$id]);
         }
+        header("Location : index.php?action=listDirectors.php");
         require("view/LandingPage/viewLandingPage.php");
     }
 

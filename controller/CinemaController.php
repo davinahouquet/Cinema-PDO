@@ -116,12 +116,15 @@ class CinemaController {
                     "realisateur" => $realisateur
                 ]);
                     
-                $selectedGenres = $_POST['genre'];
+                $requeteGenre = $pdo->query("SELECT id_genre, nom_genre FROM genre");
+                $requeteGenre->execute();
+
+                $selectedGenres = isset($_POST["genre"]) ? $_POST["genre"] : [];
 
                 foreach ($selectedGenres as $genre) {
                     $requeteAddGenre = $pdo->prepare("INSERT INTO categoriser (id_film, id_genre) VALUES (LAST_INSERT_ID(), :id_genre)");
                     $requeteAddGenre->execute(["id_genre" => $genre]);
-                }
+}
             }
         }
         require("view/LandingPage/viewLandingPage.php");
@@ -264,7 +267,7 @@ class CinemaController {
                 $requeteRemoveGenres->execute(["id" => $id]);
 
                 //Update genre
-                $selectedGenres = $_POST["genre"];
+                $selectedGenres = $_POST['genre'];
                 
                 foreach ($selectedGenres as $genre) {
 
