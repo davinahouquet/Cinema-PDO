@@ -10,30 +10,29 @@
     font-family: "Poppins", sans-serif;
 }
 
-/*---------- Barre de navigation ----------*/
-nav{
-    display: flex;
-    align-items: center;
-}
-
 body{
     background: linear-gradient(to left top, var(--dark-blue), #000000);
     background-attachment: fixed;
 }
+/* ----------Commun à toutes les pages ---------- */
 
-.navigation{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    color: white;
+h1{
+    text-align: center;
+    margin: 15px;
+}
+/* Les input et les selects */
+input, select{
+    width: 200px;
+    height: 45px;
+    border-radius: 10px;
+    padding: 2px;
+    color: var(--dark-blue);  
 }
 
-.logo-title{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
+input:hover{
+    color:#ffffff;
+    background: #919191;
+    cursor: pointer;
 }
 
 li{
@@ -53,6 +52,44 @@ a:hover{
 option{
     color: var(--dark-blue);
 }
+
+/* Les formulaires d'ajouts */
+.updateFilm, .addCasting, .addDirector, .addGenre, .addActor{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
+    box-shadow: 20px 25px 15px rgb(17, 17, 17);
+}
+
+table{
+    border-spacing: 30px;
+}
+
+/*---------- Barre de navigation ----------*/
+nav{
+    display: flex;
+    align-items: center;
+}
+
+
+.navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+.logo-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
 
 .cinema-button{
     background-color: rgba(137, 47, 44, 0.7);
@@ -106,43 +143,33 @@ option{
 } */
 
 .viewFilm-img{
+    max-width: 800px;
     position: fixed;
     bottom: 0;
     right: 0;
 }
 
-/* ----------Commun à toutes les pages d'ajout ---------- */
-.updateFilm, .addCasting, .addDirector, .addGenre, .addActor{
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+/* ---------- View details film ----------*/
+.details-film-container{
+    max-width: 1000px;
+    height: 650px;
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
-    box-shadow: 20px 25px 15px rgb(17, 17, 17);
+    display: grid;
+    margin-left: 10%;
+    padding: 15px;
+    text-align: justify;
 }
 
-/* Les input et les selects */
-input, select{
-    width: 200px;
-    height: 45px;
-    border-radius: 10px;
-    padding: 2px;
-    color: var(--dark-blue);  
-}
 
-input:hover{
-    color:#ffffff;
-    background: #919191;
-    cursor: pointer;
+/* Contient les boutons */
+.details-film-button{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 }
 
 /*---------- Page d'ajout d'un film ----------*/
-
-h1{
-    text-align: center;
-    margin: 15px;
-}
 
 .container-form{
     width: 100%;
@@ -163,6 +190,12 @@ h1{
     margin-top: 155px;
 }
 
+.image-viewAddFilm{
+    height: 750px;
+    position: fixed;
+    bottom: 0;
+    left: 100px;
+}
 
 .submit{
     color: var(--dark-blue);

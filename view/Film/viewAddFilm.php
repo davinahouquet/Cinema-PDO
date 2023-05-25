@@ -4,6 +4,11 @@ ob_start();
 
 ?>
 
+<div class="container-image-viewAddFilm">
+    <img src="public/img/Samuel-L-Jackson-PNG-Photo.png" class="image-viewAddFilm">
+</div>
+
+
 <div class="container-form">
 
 <form enctype="multipart/form-data" action="index.php?action=addFilm" method="POST" class="addFilm">
@@ -45,8 +50,6 @@ ob_start();
             ?>
         </select>
     </div>
-
-
     <div class="form-input">
         <label>Release date :</label>
         <input name="anneeSortie" id="dateSortie" type="number" placeholder="Released in..." min="1" max="3000" required>
