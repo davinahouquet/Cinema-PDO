@@ -5,7 +5,8 @@ ob_start();
 ?>
 
 <!-- Affichage des détails d'un genre -->
-<div>
+<section class="viewDetailsGenre">
+<div class="details-genre-container">
     <?php
         $genre = $requeteDetailsGenre->fetch();
     ?>
@@ -18,14 +19,15 @@ ob_start();
     <?php        
          }
     ?>
+
+<div class="details-genre-button-container">
     <form action="index.php?action=deleteGenre&id=<?=$genre["id_genre"]?>" method="post">
         <input name="deleteGenre" type="submit" value="Delete this genre">
     </form>
-</div>
-
     <a href="index.php?action=updateGenre&id=<?= $genre['id_genre'] ?>"><input type="submit" value="Update Genre"></a>
-
-
+</div>
+</div>
+</section>
 <?php
 $titre = "Genre details";
 $contenu = ob_get_clean();

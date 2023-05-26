@@ -63,7 +63,7 @@ $film = $requete->fetch();
     </div>
     <div class="form-input">
         <label>Image :</label>
-        <input name="affiche" type="file" value='<?= $film["affiche"] ?>' required>
+        <input name="affiche" type="file" value='<?= $film["affiche"] ?>'>
     </div>
     <div class="form-input">
         <label for="note">Note :</label>

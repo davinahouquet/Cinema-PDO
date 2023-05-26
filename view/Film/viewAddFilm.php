@@ -64,7 +64,7 @@ ob_start();
     </div>
     <div class="form-input">
         <label>Image :</label>
-        <input name="affiche" id="affiche" type="file" placeholder="Download a file"  required>
+        <input name="affiche" id="affiche" type="file" placeholder="Download a file">
     </div>
     <div class="form-input">
         <label for="note">Note :</label>

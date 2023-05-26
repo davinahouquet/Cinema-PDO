@@ -47,6 +47,16 @@ class CinemaController {
 
         $requeteGenre->execute(["id"=>$id]);
 
+        $requeteCasting = $pdo->prepare("SELECT role.role, personne.prenom, personne.nom, personne.sexe
+        FROM film, jouer, acteur, personne, role
+        WHERE film.id_film = jouer.id_film
+        AND jouer.id_acteur = acteur.id_acteur
+        AND acteur.id_personne = personne.id_personne
+        AND role.id_role = jouer.id_role
+        AND film.id_film = :id");
+
+        $requeteCasting->execute(["id"=>$id]);
+
         require ("view/Film/viewdetailFilm.php");
     }
 
@@ -278,7 +288,6 @@ class CinemaController {
             }
         }
         }
-        // header("Location: index.php?action=detailFilm&id=$id");
         require("view/Film/viewUpdateFilm.php");
     }
     

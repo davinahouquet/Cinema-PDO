@@ -38,10 +38,18 @@ $genres = $requeteGenre->fetchAll();
                     <?php
                         }
                     ?>
-                       
+                <p>Casting :
+                    <?php
+                        foreach($requeteCasting as $casting){
+                    ?>
+                        <?= $casting["role"] ." is interpreted by ".$casting["prenom"]. " ". $casting["nom"]."<br>" ?>
+                    <?php
+                        }
+                    ?>
+                </p>   
                 </td>
             </tr>
-
+            
             <?php  } ?>
         </tbody>
     </table>
