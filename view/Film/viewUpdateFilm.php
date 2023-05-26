@@ -34,7 +34,7 @@ $film = $requete->fetch();
     <div class="form-input">
         <label>Genre :</label>
         
-        <select name="genre[]" class="select" multiple>
+        <select name="genre[]" class="select" multiple required>
 
             <?php
 
@@ -55,7 +55,7 @@ $film = $requete->fetch();
     </div>
     <div class="form-input">
         <label>Duration (min) :</label>
-        <input name="duree" id="duree" type="number" min="1" value='<?= $film["duree"] ?>' required>
+        <input name="duree" type="number" min="1" value="<?= $film["duree"] ?>" required>
     </div>
     <div class="form-input">
         <label>Plot :</label>

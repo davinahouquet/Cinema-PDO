@@ -62,6 +62,8 @@ option{
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
     box-shadow: 20px 25px 15px rgb(17, 17, 17);
+    margin-top: 10%;
+    position: fixed;
 }
 
 table{
@@ -69,8 +71,12 @@ table{
 }
 
 /*---------- Barre de navigation ----------*/
+/* .template{
+
+} */
+
 nav{
-    display: flex;
+    display: block;
     align-items: center;
 }
 
@@ -103,18 +109,18 @@ nav{
 }
 
 .landing-page-title{
-    font-size: 40px;
+    font-size:35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 250px;
-    left: 200px;
+    left: 10%;
 }
 
 .h2{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 300;
 }
 
@@ -128,6 +134,7 @@ nav{
     position: absolute;
     right: 0;
     top:0;
+    display: block;
 }
 
 /* View Film (list) */
@@ -182,21 +189,21 @@ nav{
 }
 
 .addFilm{
-    width: 400px;
+    width: 500px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
     box-shadow: 20px 25px 15px rgb(17, 17, 17);
-    margin-top: 155px;
+    margin-top: 12%;
 }
 
 .image-viewAddFilm{
-    height: 650px;
+    height: 600px;
     position: fixed;
     bottom: 0;
-    left: 25px;
+    left: 10px;
 }
 
 .submit{
@@ -218,6 +225,21 @@ nav{
     border-radius: 10px;
     padding: 2px;
     color: var(--dark-blue);
+}
+
+fieldset{
+    max-width: 500px;
+    max-height: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    z-index: 1;
+}
+
+.checkbox{
+    width:10px;
+    font-size: 10px;
 }
 
 .form-input{
@@ -276,4 +298,24 @@ nav{
     justify-content: center;
     gap: 5px;
     position: relative;
+}
+
+/* ---------- Role ---------- */
+.viewRole{
+    display: flex;
+    flex-direction: row;
+}
+
+.image-role-container{
+    max-width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.image-role{
+    max-height: 100vh;
+    position: absolute;
+    right: 85px;
+    top:0;
+    display: block;
 }

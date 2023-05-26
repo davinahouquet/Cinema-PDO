@@ -42,7 +42,7 @@ $genres = $requeteGenre->fetchAll();
                     <?php
                         foreach($requeteCasting as $casting){
                     ?>
-                        <?= $casting["role"] ." is interpreted by ".$casting["prenom"]. " ". $casting["nom"]."<br>" ?>
+                        <a href="index.php?action=detailsRole&id=<?= $casting["id_role"] ?>"><?= $casting["role"] ?></a> is interpreted by <a href="index.php?action=detailsActor&id=<?= $casting["id_acteur"]?>"><?= $casting["prenom"]. " ". $casting["nom"]."</a><br>" ?>
                     <?php
                         }
                     ?>

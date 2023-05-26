@@ -35,20 +35,21 @@ ob_start();
     </div>
 
     <div class="form-input">
-        <label>Genre :</label>
-        
-        <select name="genre[]" class="select" multiple>
+        <fieldset>
+        <legend>Genre(s)</legend>
 
-            <?php
+        <?php
+            foreach($requeteGenre->fetchAll() as $genre){
+        ?>
+        <div class="checkbox-rect">
+            <label for="genre[]"><?= $genre["nom_genre"]?></label>
+            <input name="genre[]" type="checkbox" value="<?= $genre["id_genre"]?>" class="checkbox" id="checkbox-rect1">
+        </div>
+        <?php
+            }
 
-                foreach($requeteGenre->fetchAll() as $genre){
-            ?>
-                <option value="<?= $genre["id_genre"]?>"><?= $genre["nom_genre"]?></option>
-            <?php
-                    }
-
-            ?>
-        </select>
+        ?>
+    </fieldset>  
     </div>
     <div class="form-input">
         <label>Release date :</label>

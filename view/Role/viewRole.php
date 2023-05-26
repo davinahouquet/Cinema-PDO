@@ -1,25 +1,30 @@
 <?php ob_start(); ?>
 
-<p>There are <?= $requeteRole->rowCount() ?> roles</p>
-<button class="cinema-button"><a href="index.php?action=getAddRole">Add Role</a></button>
 
-<table>
-    <thead>
-        <tr>
-            <th>NAME</th>
-           
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($requeteRole->fetchAll() as $role){ ?>
-                <tr>
-                    <td><a href="index.php?action=detailsRole&id=<?= $role["id_role"] ?>"><?= $role["role"] ?></td>  
-                </tr>
-          <?php  } ?>
-    </tbody>
-</table>
+<section>
+    <p>There are <?= $requeteRole->rowCount() ?> roles <button class="cinema-button"><a href="index.php?action=getAddRole">Add Role</a></button></p>
+<div  class="viewRole">
+    <table>
+        <thead>
+            <tr>
+                <th>NAME</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach($requeteRole->fetchAll() as $role){ ?>
+                    <tr>
+                        <td><a href="index.php?action=detailsRole&id=<?= $role["id_role"] ?>"><?= $role["role"] ?></td>  
+                    </tr>
+            <?php  } ?>
+        </tbody>
+    </table>
 
+    <div class="image-role-container">
+        <img src="public/img/Spiderman-se-balancer-dun-building-a-lautre.png" class="image-role">
+    </div>
+</section>
 <?php
 $titre = "Roles";
 $contenu = ob_get_clean();

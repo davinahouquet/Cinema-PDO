@@ -47,7 +47,7 @@ class CinemaController {
 
         $requeteGenre->execute(["id"=>$id]);
 
-        $requeteCasting = $pdo->prepare("SELECT role.role, personne.prenom, personne.nom, personne.sexe
+        $requeteCasting = $pdo->prepare("SELECT role.id_role, role.role, acteur.id_acteur, personne.prenom, personne.nom, personne.sexe
         FROM film, jouer, acteur, personne, role
         WHERE film.id_film = jouer.id_film
         AND jouer.id_acteur = acteur.id_acteur
@@ -157,6 +157,15 @@ class CinemaController {
     public function addCasting(){
 
         $pdo = Connect::seConnecter();
+
+        $requeteFilm = $pdo->query("SELECT id_film, titre
+        FROM film");
+        $requeteActor = $pdo->query("SELECT a.id_acteur, p.prenom, p.nom
+              FROM personne p, acteur a
+              WHERE p.id_personne = a.id_personne");
+        $requeteRole = $pdo->query("SELECT id_role, role
+            FROM role");
+
         if(isset($_POST["submitCasting"])){
 
             $film= filter_input(INPUT_POST, "film", FILTER_SANITIZE_FULL_SPECIAL_CHARS);

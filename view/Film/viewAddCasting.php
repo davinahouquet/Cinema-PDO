@@ -15,12 +15,12 @@ ob_start();
         <select name="film" id="film" required>
 
                 <?php
-                    $i = 1;
+                    
                     foreach($requeteFilm->fetchAll() as $film){
                 ?>
-                    <option value="<?= $i ?>"><?= $film["titre"]?></option>
+                    <option value="<?= $film["id_film"] ?>"><?= $film["titre"]?></option>
                 <?php
-                        $i++;
+                
                     }
                 ?>
 
@@ -31,12 +31,12 @@ ob_start();
         <select name="role" id="role" required>
 
                 <?php
-                    $i = 1;
+                  
                     foreach($requeteRole->fetchAll() as $role){
                 ?>
-                    <option value="<?= $i ?>"><?= $role["role"] ?></option>
+                    <option value="<?= $role["id_role"] ?>"><?= $role["role"] ?></option>
                 <?php
-                        $i++;
+                       
                     }
                 ?>
 
@@ -48,12 +48,12 @@ ob_start();
         <select name="acteur" id="acteur" required>
 
                 <?php
-                    $i = 1;
+                    
                     foreach($requeteActor->fetchAll() as $acteur){
                 ?>
-                    <option value="<?= $i ?>"><?= $acteur["prenom"] . " " . $acteur["nom"] ?></option>
+                    <option value="<?= $acteur["id_acteur"] ?>"><?= $acteur["prenom"] . " " . $acteur["nom"] ?></option>
                 <?php
-                        $i++;
+                       
                     }
                 ?>
 
