@@ -6,16 +6,19 @@ ob_start();
 
 <p>There are <?= $requete->rowCount() ?> movies</p>
 
-<div class="button-film-container">
-    <button class="cinema-button"><a href="index.php?action=getAddFilm">Add Film</a></button>
-    <button class="cinema-button"><a href="index.php?action=getAddCasting">Add Casting</a></button>
-</div>
+
 <div class="lists-container">
     
     <table class="table-view-film">
         <thead>
             <tr>
                 <th>TITLES</th>
+                <th>
+                    <div class="button-film-container">
+                        <button class="cinema-button"><a href="index.php?action=getAddFilm">Add Film</a></button>
+                        <button class="cinema-button"><a href="index.php?action=getAddCasting">Add Casting</a></button>
+                    </div>
+                </th>
         </tr>
     </thead>
     <tbody>

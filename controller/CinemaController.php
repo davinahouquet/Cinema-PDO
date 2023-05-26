@@ -47,7 +47,8 @@ class CinemaController {
 
         $requeteGenre->execute(["id"=>$id]);
 
-        $requeteCasting = $pdo->prepare("SELECT role.id_role, role.role, acteur.id_acteur, personne.prenom, personne.nom, personne.sexe
+        $requeteCasting = $pdo->prepare("
+        SELECT role.id_role, role.role, acteur.id_acteur, personne.prenom, personne.nom, personne.sexe
         FROM film, jouer, acteur, personne, role
         WHERE film.id_film = jouer.id_film
         AND jouer.id_acteur = acteur.id_acteur
@@ -213,7 +214,7 @@ class CinemaController {
         
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(" 
-        SELECT film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
+        SELECT film.id_film, film.titre, film.anneeSortie, film.duree, film.synopsis, film.note, personne.prenom, personne.nom
         FROM film, realisateur, personne
         WHERE film.id_realisateur = realisateur.id_realisateur
         AND realisateur.id_personne = personne.id_personne
@@ -281,8 +282,8 @@ class CinemaController {
                 ]);
 
                 // Supprimer les genres précédents
-                // $requeteRemoveGenres = $pdo->prepare("DELETE FROM categoriser WHERE id_film = :id");
-                // $requeteRemoveGenres->execute(["id" => $id]);
+                $requeteRemoveGenres = $pdo->prepare("DELETE FROM categoriser WHERE id_film = :id");
+                $requeteRemoveGenres->execute(["id" => $id]);
 
 
                 // var_dump($_POST);die;

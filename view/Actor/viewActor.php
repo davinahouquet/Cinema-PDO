@@ -1,27 +1,31 @@
 <?php ob_start(); ?>
 
-<p>There are <?= $requeteActor->rowCount() ?> actors</p>
-<button class="cinema-button"><a href="index.php?action=getAddActor">Add Actor</a></button>
+<section class="viewActor">
+    <table>
+        <thead>
+            <tr>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th><button class="cinema-button"><a href="index.php?action=getAddActor">Add Actor</a></button></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach($requeteActor->fetchAll() as $actor){ ?>
+                    <tr>
+                        <td><a href="index.php?action=detailsActor&id=<?=$actor["id_acteur"]?>"><?= $actor["prenom"] ?></a></td>
+                        <td><a href="index.php?action=detailsActor&id=<?=$actor["id_acteur"]?>"><?= $actor["nom"] ?></a></td>
+                        <td></td>
+                    </tr>
+            <?php  } ?>
+        </tbody>
+    </table>
+    <div class="actor-image-container">
+        <img src="public/img/patrick_bateman_png_by_monkeydgerluffy_dfkytyp-fullview.png" class="actor-image">
+    </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>FIRST NAME</th>
-            <th>LAST NAME</th>
-           
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach($requeteActor->fetchAll() as $actor){ ?>
-                <tr>
-                    <td><a href="index.php?action=detailsActor&id=<?=$actor["id_acteur"]?>"><?= $actor["prenom"] ?></a></td>
-                    <td><a href="index.php?action=detailsActor&id=<?=$actor["id_acteur"]?>"><?= $actor["nom"] ?></a></td>
-                    
-                </tr>
-          <?php  } ?>
-    </tbody>
-</table>
+</section>
+<p>There are <?= $requeteActor->rowCount() ?> actors</p>
 
 <?php
 $titre = "Actors";

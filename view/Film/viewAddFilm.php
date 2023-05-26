@@ -35,22 +35,21 @@ ob_start();
     </div>
 
     <div class="form-input">
-        <fieldset>
-        <legend>Genre(s)</legend>
+        <label>Genre :</label>
+        <select name="genre[]" type="text" placeholder="Genre" class="select" multiple>   
+            <?php
 
-        <?php
-            foreach($requeteGenre->fetchAll() as $genre){
-        ?>
-        <div class="checkbox-rect">
-            <label for="genre[]"><?= $genre["nom_genre"]?></label>
-            <input name="genre[]" type="checkbox" value="<?= $genre["id_genre"]?>" class="checkbox" id="checkbox-rect1">
-        </div>
-        <?php
-            }
-
-        ?>
-    </fieldset>  
+                foreach($requeteGenre->fetchAll() as $genre){
+            ?>
+                <option value="<?= $genre["id_genre"]?>"><?= $genre["nom_genre"]?></option>
+            <?php
+                    }
+                    
+            ?>
+        </select>
     </div>
+    <p class="select-p">Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
+    
     <div class="form-input">
         <label>Release date :</label>
         <input name="anneeSortie" id="dateSortie" type="number" placeholder="Released in..." min="1" max="3000" required>
@@ -65,7 +64,7 @@ ob_start();
     </div>
     <div class="form-input">
         <label>Image :</label>
-        <input name="affiche" id="affiche" type="file" placeholder="Download a file">
+        <input name="affiche" id="affiche" type="file" placeholder="Download a file"  required>
     </div>
     <div class="form-input">
         <label for="note">Note :</label>

@@ -17,12 +17,12 @@ $genres = $requeteGenre->fetchAll();
                 <td>
                     <?php
                         if($film["affiche"] == NULL){
-                            echo "<img src='public/img/idk.jpeg' width='300'>";
+                            echo "<img src='public/img/cinema.jpg' width='300'>";
                         }
                         else{
                         echo "<img src=". $film["affiche"] ." width='300'>";
                         }
-                        ?>
+                    ?>
                 </td>
                 <td>
                     <p>Duration : <?= $film["duree"]?></p>

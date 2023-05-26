@@ -2,7 +2,7 @@
 
 <p>There are <?= $requeteGenre->rowCount() ?> genres</p>
 <button class="cinema-button"><a href="index.php?action=getAddGenre">Add Genre</a></button>
-
+<div class="director-list-container">
 <table>
     <thead>
         <tr>
@@ -20,7 +20,7 @@
           <?php  } ?>
     </tbody>
 </table>
-
+</div>
 <?php
 $titre = "Genres";
 $contenu = ob_get_clean();
