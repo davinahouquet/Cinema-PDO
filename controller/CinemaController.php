@@ -193,25 +193,24 @@ class CinemaController {
     public function updateFilm($id){
         
         $pdo = Connect::seConnecter();
-        // D'abord on affiche les infos déjà existantes grâce à query
         $requete = $pdo->prepare(" 
-            SELECT film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
-            FROM film, realisateur, personne
-            WHERE film.id_realisateur = realisateur.id_realisateur
-            AND realisateur.id_personne = personne.id_personne
-            AND film.id_film = :id
-        ");
-                    
+        SELECT film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
+        FROM film, realisateur, personne
+        WHERE film.id_realisateur = realisateur.id_realisateur
+        AND realisateur.id_personne = personne.id_personne
+        AND film.id_film = :id
+        ");        
         $requete->execute(["id" => $id]);
         
+        // D'abord on affiche les infos déjà existantes grâce à query
         $requeteDirector = $pdo->query("SELECT id_realisateur, prenom, nom
                                         FROM realisateur r
                                         INNER JOIN personne ON personne.id_personne = r.id_personne
         ");   
         $requeteDirector->execute();
         
-        $requeteGenre = $pdo->query("SELECT *
-                                            FROM genre");
+        $requeteGenre = $pdo->query("SELECT id_genre, nom_genre
+                                    FROM genre");
         $requeteGenre-> execute();
 
         // Ensuite, seulement si l'action d'update est appelée on execute
@@ -263,11 +262,13 @@ class CinemaController {
                 ]);
 
                 // Supprimer les genres précédents
-                $requeteRemoveGenres = $pdo->prepare("DELETE FROM categoriser WHERE id_film = :id");
-                $requeteRemoveGenres->execute(["id" => $id]);
+                // $requeteRemoveGenres = $pdo->prepare("DELETE FROM categoriser WHERE id_film = :id");
+                // $requeteRemoveGenres->execute(["id" => $id]);
 
+
+                // var_dump($_POST);die;
                 //Update genre
-                $selectedGenres = $_POST['genre'];
+                $selectedGenres = $_POST["genre"];
                 
                 foreach ($selectedGenres as $genre) {
 
