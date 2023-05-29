@@ -68,6 +68,7 @@ option{
 
 table{
     border-spacing: 5px;
+    z-index: 1;
 }
 
 /* Les boutons des vues details */
@@ -136,11 +137,10 @@ nav{
 
 /* View Film (list) */
 .lists-container{
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content:left;
     flex-wrap: wrap;
-    margin-left :50px;
 }
 
 .viewFilm-img{
@@ -222,6 +222,14 @@ nav{
     font-size: 10px;
 }
 
+.select-genre{
+    width: 200px;
+    height: 90px;
+    border-radius: 10px;
+    padding: 2px;
+    color: var(--dark-blue);
+}
+
 .form-input{
     display: flex;
     flex-direction: row;
@@ -231,12 +239,11 @@ nav{
     padding-left: 10px;
     padding-right: 10px;
 }
-
 .button-film-container{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
 }
 
 /* ---------- Page d'ajout d'un casting ----------------------- */

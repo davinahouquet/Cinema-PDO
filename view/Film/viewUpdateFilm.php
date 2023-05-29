@@ -34,7 +34,7 @@ $film = $requete->fetch();
     <div class="form-input">
         <label>Genre :</label>
         
-        <select name="genre[]" class="select" multiple required>
+        <select name="genre[]" class="select-genre" multiple required>
 
             <?php
 
@@ -42,11 +42,12 @@ $film = $requete->fetch();
             ?>
                 <option value="<?= $genre["id_genre"]?>"><?= $genre["nom_genre"]?></option>
             <?php
-                    }
+                }
 
             ?>
         </select>
     </div>
+    <p class="select-p">Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
 
 
     <div class="form-input">
@@ -67,7 +68,7 @@ $film = $requete->fetch();
     </div>
     <div class="form-input">
         <label for="note">Note :</label>
-        <input type="number" name="note" id="note" min="1" max="5"  value='<?= $film["note"] ?>'required>
+        <input type="number" step="0.01" id="totalAmt" name="note" min="1" max="5"  value='<?= $film["note"] ?>'required>
        
         
     </div>

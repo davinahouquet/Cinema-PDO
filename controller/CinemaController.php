@@ -14,7 +14,7 @@ class CinemaController {
     public function listFilms(){
         $pdo = Connect::seConnecter(); //On se connecte
         $requete = $pdo->query(" 
-        SELECT film.id_film, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
+        SELECT film.id_film, film.affiche, film.titre, film.anneeSortie, TIME_FORMAT(SEC_TO_TIME(film.duree*60), '%k h %i') AS duree, film.synopsis, film.note, personne.prenom, personne.nom
         FROM film, realisateur, personne
         WHERE film.id_realisateur = realisateur.id_realisateur
         AND realisateur.id_personne = personne.id_personne
@@ -295,9 +295,11 @@ class CinemaController {
                     $requeteUpdateGenre = $pdo->prepare("INSERT INTO categoriser (id_film, id_genre) VALUES (:id_film, :id_genre)");
                     $requeteUpdateGenre->execute(["id_film" => $id, "id_genre" => $genre]);
                 }
+                
             }
         }
-        }
+    }
+    
         require("view/Film/viewUpdateFilm.php");
     }
     
