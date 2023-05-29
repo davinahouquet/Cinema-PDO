@@ -6,13 +6,12 @@ ob_start();
 
 <h1>Choose between our <?= $requete->rowCount() ?> movies !</h1>
 
-
-
-
 <div class="button-film-container">
     <button class="cinema-button"><a href="index.php?action=getAddFilm">Add Film</a></button>
     <button class="cinema-button"><a href="index.php?action=getAddCasting">Add Casting</a></button>
 </div>
+
+<p>Click on it to have more informations</p>
 
 <div class="lists-container">
     <?php
@@ -21,22 +20,23 @@ ob_start();
                 <thead>
                     <th><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?php
                         if($film["affiche"] == NULL){
-                            echo "<img src='public/img/cinema.jpg' height='200'>";
+                            echo "<img src='public/img/cinema.jpg' height='300'>";
                         }
                         else{
-                        echo "<img src=". $film["affiche"] ." width='300'>";
+                        echo "<img src=". $film["affiche"] ." width='250' height='350'>";
                         }
                     ?></a></th>
                 </thead>
                 <tbody>
-                    <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></td>
+                    <tr>
+                        <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><h3><?= $film["titre"] ?></h3></a></td>
+                    </tr>
                 </tbody>
             </table>
             
                 
           <?php  } ?>
 </div>
-
 <div class="viewFilm-img-container">
     <img src="public/img/Scarface-PNG-Image.png" class="viewFilm-img">
 </div>

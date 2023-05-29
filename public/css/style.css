@@ -20,8 +20,9 @@ h1{
     text-align: center;
     margin: 15px;
 }
+
 /* Les input et les selects */
-input, select{
+input, select, textarea{
     width: 200px;
     height: 45px;
     border-radius: 10px;
@@ -53,6 +54,10 @@ option{
     color: var(--dark-blue);
 }
 
+img{
+    border-radius: 10px;
+}
+
 /*---------- Les formulaires d'ajouts ----------------------------*/
 .updateFilm, .addCasting, .addDirector, .addGenre, .addActor{
     width: 400px;
@@ -69,6 +74,8 @@ option{
 table{
     border-spacing: 5px;
     z-index: 1;
+    border-spacing: 0.7rem;
+    text-align: center;
 }
 
 /* Les boutons des vues details */
@@ -141,6 +148,7 @@ nav{
     display: flex;
     justify-content:left;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .viewFilm-img{
@@ -285,6 +293,12 @@ nav{
     justify-content: center;
     gap: 5px;
     position: relative;
+}
+
+
+/* -----------La page d'ajout d'un rôle-------------------------------------------------- */
+.radio{
+    width: 20px;
 }
 
 /* ---------- La vue Role ----------------------------------------------- */

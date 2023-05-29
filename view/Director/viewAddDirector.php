@@ -20,8 +20,8 @@ ob_start();
     <div class="form-input">
 
         <label for="sexe">Gender :</label>
-            M :</label><input type="radio" name="sexe" id="Homme" value="Homme" >
-            F :</label><input type="radio" name="sexe" id="Femme" value="Femme">
+            M :</label><input type="radio" class="radio" id="Homme" value="Homme" >
+            F :</label><input type="radio" class="radio" id="Femme" value="Femme">
     </div>
 
     <div class="form-input">

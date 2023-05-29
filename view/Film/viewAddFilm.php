@@ -60,7 +60,7 @@ ob_start();
     </div>
     <div class="form-input">
         <label>Plot :</label>
-        <input name="synopsis" id="synopsis" type="text" placeholder="Plot"  required>
+        <textarea name="synopsis" id="synopsis" type="text" placeholder="Plot"  required></textarea>
     </div>
     <div class="form-input">
         <label>Image :</label>

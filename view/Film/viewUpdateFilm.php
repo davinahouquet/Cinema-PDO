@@ -60,7 +60,7 @@ $film = $requete->fetch();
     </div>
     <div class="form-input">
         <label>Plot :</label>
-        <input name="synopsis" id="synopsis" type="text" value='<?= $film["synopsis"] ?>'  required>
+        <textarea name="synopsis" id="synopsis" type="text" value='<?= $film["synopsis"] ?>'  required></textarea>
     </div>
     <div class="form-input">
         <label>Image :</label>
