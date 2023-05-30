@@ -193,7 +193,7 @@ nav{
 /* ---------- View details film : viewDetailFilm ------------------------------------------------*/
 .details-film-container{
     max-width: 1000px;
-    height: 650px;
+    max-height: 800px;
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
     display: grid;
