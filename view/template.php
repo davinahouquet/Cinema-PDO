@@ -42,6 +42,11 @@
                     </select>
                 </li>
             </ul>
+
+            <div class="user-img">
+                <a href="index.php?action=user"><img src="public/img/profile-user.png"></a>
+            </div>
+
         </nav>
     </section>
 

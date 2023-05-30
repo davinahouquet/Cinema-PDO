@@ -6,6 +6,7 @@ use Controller\GenreController;
 use Controller\RoleController;
 use Controller\ActorController;
 use Controller\DirectorController;
+use Controller\UserController;
 
 //On autocharge les classes du projet
 spl_autoload_register(function($class_name){
@@ -18,6 +19,8 @@ $ctrlGenre = new GenreController();
 $ctrlRole = new RoleController();
 $ctrlActor = new ActorController();
 $ctrlDirector = new DirectorController();
+$ctrlUser = new UserController();
+
 
 //En fonction de l'action détectée dans l'URL via la propriété "action" on interagit avec la bonne méthode du controller
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
@@ -67,5 +70,10 @@ if(isset($_GET["action"])){
         case "addDirector" : $ctrlDirector->addDirector(); break;
         case "deleteDirector" : $ctrlDirector->deleteDirector($id); break;
         case "updateDirector" : $ctrlDirector->updateDirector($id); break;
+
+        //USER
+        case "user" : $ctrlUser->user(); break;
+        case "register" : $ctrlUser->register(); break;
+        // case "login" : $ctrlUser->login(); break;
     }
 }

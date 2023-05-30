@@ -94,6 +94,9 @@ nav{
     gap: 15px;
 }
 
+.user-img{
+    z-index: 1;
+}
 /*---------- Landing Page -------------------------------------------------------------*/
 .landing-page{
     max-height: 100vh;
@@ -209,6 +212,7 @@ nav{
     display: flex;
     justify-content: center;
     flex-direction: row;
+    margin: 10px;
 }
 
 /*---------- Page d'ajout d'un film ---------------------------*/
