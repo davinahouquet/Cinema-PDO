@@ -358,7 +358,7 @@ nav{
     height: 100vh;
     display: flex;
     flex-direction: row;
-    padding-left: 5%;
+    padding-left: 10%;
 }
 
 /* L'image */
@@ -370,7 +370,7 @@ nav{
 
 .p-actor{
     text-align: left;
-    padding-left: 5%;
+    padding-left: 10%;
 }
 
 /* ---------- La vue Director -----------------------------------------------*/
