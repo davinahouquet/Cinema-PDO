@@ -20,16 +20,16 @@ ob_start();
                 <thead>
                     <th><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><?php
                         if($film["affiche"] == NULL){
-                            echo "<img src='public/img/cinema.jpg' height='300'>";
+                            echo "<img src='public/img/cinema.jpg' height='300' class='img-film'>";
                         }
                         else{
-                        echo "<img src=". $film["affiche"] ." width='250' height='350'>";
+                        echo "<img src=". $film["affiche"] ." width='250' height='350' class='img-film'>";
                         }
                     ?></a></th>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><h3><?= $film["titre"] ?></h3></a></td>
+                        <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><h3 class="h3-film"><?= $film["titre"] ?></h3></a></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,5 +1,7 @@
 <?php ob_start(); ?>
 
+<p class="p-actor">Click on one of our <?= $requeteActor->rowCount() ?> actors to have more informations</p>
+
 <section class="viewActor">
     <table>
         <thead>
@@ -25,7 +27,6 @@
     </div>
 
 </section>
-<p>There are <?= $requeteActor->rowCount() ?> actors</p>
 
 <?php
 $titre = "Actors";

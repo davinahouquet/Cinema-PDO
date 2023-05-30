@@ -1,5 +1,6 @@
 :root{
     --dark-blue: #183062;
+    --yellow : #ffe70b;
 }
 
 *{
@@ -47,7 +48,7 @@ a{
 }
 
 a:hover{
-    color: yellow;
+    color: var(--yellow);
 }
 
 option{
@@ -58,17 +59,9 @@ img{
     border-radius: 10px;
 }
 
-/*---------- Les formulaires d'ajouts ----------------------------*/
-.updateFilm, .addCasting, .addDirector, .addGenre, .addActor{
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background: linear-gradient(to left top,#892F2C, #081530);
-    border-radius: 10px;
-    box-shadow: 20px 25px 15px rgb(17, 17, 17);
-    margin-top: 10%;
-    position: fixed;
+p{
+    text-align: center;
+    margin: 15px;
 }
 
 table{
@@ -77,15 +70,7 @@ table{
     border-spacing: 0.7rem;
     text-align: center;
 }
-
-/* Les boutons des vues details */
-.cinema-button{
-    background-color: rgba(213, 213, 213, 0.7);
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 5px 5px 5px rgb(17, 17, 17);
-}
-/*---------- Barre de navigation ----------------------------*/
+/*---------- Barre de navigation ---------------------------------------------------------*/
 nav{
     display: block;
     align-items: center;
@@ -108,7 +93,7 @@ nav{
     gap: 15px;
 }
 
-/*---------- Landing Page --------------------------------*/
+/*---------- Landing Page -------------------------------------------------------------*/
 .landing-page{
     max-height: 100vh;
 }
@@ -135,7 +120,7 @@ nav{
 }
 
 .landing-page-image{
-    max-height: 100vh;
+    height: 100vh;
     position: absolute;
     right: 0;
     top:0;
@@ -146,9 +131,11 @@ nav{
 .lists-container{
     width: 100%;
     display: flex;
-    justify-content:left;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .viewFilm-img{
@@ -158,7 +145,51 @@ nav{
     right: 0;
 }
 
-/* ---------- View details film -----------------------------*/
+
+/*---------- Les formulaires d'ajouts ---------------------------------------------------------*/
+.updateFilm, .addCasting, .addDirector, .addGenre, .addActor{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
+    box-shadow: 20px 25px 15px rgb(17, 17, 17);
+    margin-top: 10%;
+    position: fixed;
+}
+
+
+/* Les boutons des vues details */
+.cinema-button{
+    background-color: rgba(213, 213, 213, 0.7);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px rgb(17, 17, 17);
+    margin: 5px;
+}
+
+.cinema-button:hover{
+    background-color: #1b1b1b;
+}
+
+/*---------- La vue film : viewFilm ----------------------------------------------------------*/
+
+/* Correspond à chaque affiche */
+.img-film{
+    border-radius: 10px;
+    transition: 0.7s;
+}
+.img-film:hover{
+    transform: translateY(-20px);
+    transition: 0.7s;
+}
+/* Correspond à chaque titre de film */
+.h3-film:hover{
+    color: var(--yellow);
+}
+
+/* ---------- View details film : viewDetailFilm ------------------------------------------------*/
 .details-film-container{
     max-width: 1000px;
     height: 650px;
@@ -179,7 +210,7 @@ nav{
 }
 
 /*---------- Page d'ajout d'un film ---------------------------*/
-
+/* Contient les formulaire d'ajout */
 .container-form{
     width: 100%;
     height: 60vh;
@@ -326,6 +357,7 @@ nav{
     height: 100vh;
     display: flex;
     flex-direction: row;
+    padding-left: 5%;
 }
 
 /* L'image */
@@ -335,12 +367,16 @@ nav{
     right: 0;
 }
 
+.p-actor{
+    text-align: left;
+    padding-left: 5%;
+}
+
 /* ---------- La vue Director -----------------------------------------------*/
-/* Contient la table director */
+/* Contient la table director et la table genre */
 .director-list-container{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     font-size: 20px;
-    padding-right: 5%;
 }
 

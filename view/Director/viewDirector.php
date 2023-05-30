@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 
+<p>Click on one of our <?= $requeteDirector->rowCount() ?> directors to have more informations</p>
 
 <div class="director-list-container">
     <table>
@@ -24,7 +25,6 @@
                 </tbody>
     </table>
 </div>
-<p>There are <?= $requeteDirector->rowCount() ?> directors</p>
 <?php
 $titre = "Directors";
 $titre_secondaire = "Liste des réalisateurs";

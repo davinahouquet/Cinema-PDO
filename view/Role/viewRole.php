@@ -3,7 +3,8 @@
 
 <section>
     <p>There are <?= $requeteRole->rowCount() ?> roles <button class="cinema-button"><a href="index.php?action=getAddRole">Add Role</a></button></p>
-<div  class="viewRole">
+
+<div  class="director-list-container">
     <table>
         <thead>
             <tr>
