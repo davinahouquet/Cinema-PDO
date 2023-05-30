@@ -15,7 +15,7 @@ ob_start();
 
         <p><?= $realisateur["sexe"] ?></p>
         <br>
-        <p>Date of birth : <?= $realisateur["date_naissance"] ?></p>
+        <p>Date of birth : <?= $realisateur["dateNaissance"] ?></p>
 
         <h3>Movie(s) related : </h3>
     <?php

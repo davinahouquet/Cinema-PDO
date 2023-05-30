@@ -91,11 +91,6 @@ class ActorController {
 
             $requeteDeleteActor1 = $pdo->prepare("DELETE FROM acteur WHERE id_acteur = :id");
             $requeteDeleteActor1->execute(["id"=>$id]);
-
-            // $requeteDeleteActor2 = $pdo->prepare("DELETE FROM personne p
-            // JOIN acteur a ON a.id_personne = p.id_personne
-            // WHERE a.id_acteur = :id");
-            // $requeteDeleteActor2->execute(["id"=>$id]);
         }
         require("view/LandingPage/viewLandingPage.php");
     }

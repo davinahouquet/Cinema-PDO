@@ -21,10 +21,10 @@ class DirectorController {
     //Détails d'un réalisateur
     public function detailsDirector($id){
         $pdo = Connect::seConnecter();
-        $requeteDetailsDirector = $pdo->prepare("SELECT id_realisateur, p.prenom, p.nom, p.sexe, DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') AS date_naissance
-            FROM realisateur r, personne p
-            WHERE r.id_personne = p.id_personne
-            AND r.id_realisateur = :id
+        $requeteDetailsDirector = $pdo->prepare("SELECT id_realisateur, p.prenom, p.nom, p.sexe, DATE_FORMAT(p.dateNaissance, '%d/%m/%Y') AS dateNaissance
+        FROM realisateur r, personne p
+        WHERE r.id_personne = p.id_personne
+        AND r.id_realisateur = :id
         ");
         $requeteDetailsDirector->execute(["id" => $id]);
 
@@ -33,6 +33,7 @@ class DirectorController {
         WHERE r.id_realisateur = f.id_realisateur
         AND r.id_realisateur = :id");
         $requeteFilms->execute(["id" => $id]);
+
         require("view/Director/viewDetailsDirector.php");
     }
 
@@ -92,8 +93,9 @@ class DirectorController {
 
             $requeteDeleteDirector1 = $pdo->prepare("DELETE FROM realisateur WHERE id_realisateur = :id");
             $requeteDeleteDirector1->execute(["id"=>$id]);
+
         }
-        header("Location : index.php?action=listDirectors.php");
+        // header("Location : index.php?action=listDirectors.php");
         require("view/LandingPage/viewLandingPage.php");
     }
 

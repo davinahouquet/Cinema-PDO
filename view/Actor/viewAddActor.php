@@ -29,10 +29,7 @@ ob_start();
         <label for="dateNaissance">Date of birth :</label>
         <input type="date" name="dateNaissance" id="dateNaissance" required>
     </div>
-    <!-- <div class="form-input">
-        <label>Image :</label>
-        <input type="file" placeholder="Download a file">
-    </div> -->
+    
     <div class="form-input">
         <input type="submit" class="submit" name="submitActor" id="submitActor">
 
