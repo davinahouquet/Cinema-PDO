@@ -3,9 +3,9 @@
 ob_start();
 
 ?>
+<p>Please, add film, role and actor before add casting !</p>
 
 <div class="container-form">
-
 <form action="index.php?action=addCasting" enctype="multipart/form-data" method="POST" class="addCasting">
     
     <h1>Add a casting</h1>

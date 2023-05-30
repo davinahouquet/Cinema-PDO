@@ -68,7 +68,7 @@ ob_start();
     </div>
     <div class="form-input">
         <label for="note">Note :</label>
-        <input type="number" name="note" id="note" min="1" max="5"  required>
+        <input type="number" step="0.01" name="note" id="note" min="1" max="5"  required>
        
         
     </div>
