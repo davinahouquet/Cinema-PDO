@@ -215,6 +215,9 @@ nav{
     margin: 10px;
 }
 
+.p-details-film{
+    text-align: left;
+}
 /*---------- Page d'ajout d'un film ---------------------------*/
 /* Contient les formulaire d'ajout */
 .container-form{
@@ -387,7 +390,28 @@ nav{
 }
 
 /* ----------- L'authentification ----------------------------------------- */
+/* Contient les deux boutons qui permettent de choisir login ou register */
 .user-choice{
     display: flex;
     flex-direction: column;
+}
+
+/* Contient films favoris et to watch later */
+.user-session{
+    width: 250px;
+    height: auto;
+    text-align: left;
+    align-items: center;
+    padding: 15px;
+    background: linear-gradient(to left top,#892F2C, #081530);
+    border-radius: 10px;
+    box-shadow: 20px 25px 15px rgb(17, 17, 17);
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+
+.a-session{
+    margin: 15px;
+    padding: 15px;
 }

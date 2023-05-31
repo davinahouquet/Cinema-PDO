@@ -25,11 +25,11 @@ $genres = $requeteGenre->fetchAll();
                     ?>
                 </td>
                 <td>
-                    <p>Duration : <?= $film["duree"]?></p>
-                    <p>Note : <?= $film["note"]?></p>
-                    <p>Director : <a href="index.php?action=detailsDirector&id=<?=$film["id_realisateur"]?>"><?= $film["prenom"]." ".$film["nom"] ?></a></p>
-                    <p>Synopsis : <?= $film["synopsis"] ?></p>
-                    <p>Genre(s) : 
+                    <p class="p-details-film">Duration : <?= $film["duree"]?></p>
+                    <p class="p-details-film">Note : <?= $film["note"]?></p>
+                    <p class="p-details-film">Director : <a href="index.php?action=detailsDirector&id=<?=$film["id_realisateur"]?>"><?= $film["prenom"]." ".$film["nom"] ?></a></p>
+                    <p class="p-details-film">Synopsis : <?= $film["synopsis"] ?></p>
+                    <p class="p-details-film">Genre(s) : 
 
                     <?php 
                         foreach($genres as $genre){
@@ -38,7 +38,7 @@ $genres = $requeteGenre->fetchAll();
                     <?php
                         }
                     ?>
-                <p>Casting :
+                <p class="p-details-film">Casting :
                     <?php
                         foreach($requeteCasting as $casting){
                     ?>
