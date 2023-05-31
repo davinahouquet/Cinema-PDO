@@ -47,28 +47,31 @@ class UserController{
         } require("view/User/viewRegister.php");
     }
 
-    // public function login(){
-
-    //     $pdo = Connect::seConnecter();
-    //     if(isset($_POST["submitLogin"])){
-
-    //         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    //         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-    //         if($email !== false && $username !== false && $password !== false){
-
-    //             $requete=$pdo->prepare("INSERT INTO utilisateur (email, username, password)
-    //             VALUES (:email, :username, :password");
-    //             $requete->execute([
-    //                 "email"=>$email,
-    //                 "username"=>$username,
-    //                 "password"=>$password
-    //             ]);
-    //         }
-    //     }
-    //     require("view/User/viewLogin.php");
-    // }
+    public function login(){
+        $pdo = Connect::seConnecter();
+        
+        if(isset($_POST["submitLogin"])){
+            $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+            $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    
+            if($email && $password){
+                $requete = $pdo->prepare("SELECT * FROM utilisateur WHERE email = :email");
+                $requete->execute(["email" => $email]);
+                $utilisateur = $requete->fetch();
+    
+                if($utilisateur && password_verify($password, $utilisateur['password'])){
+                    // Connexion réussie
+                    echo "Login successful!";
+                    exit;
+                } else {
+                    // Identifiants invalides
+                    echo "Invalid email or password";
+                }
+            }
+        }
+        
+        require("view/User/viewLogin.php");
+    }
 }
 
 ?>

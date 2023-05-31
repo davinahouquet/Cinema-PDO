@@ -31,6 +31,8 @@ ob_start();
         <div class="details-film-button">
         <input type="submit" name="submitRegister">
     </div>
+
+</form>
 </div>
 
 <p>You already have an account? <a href="index.php?action=login">Sign in →</a></p>
