@@ -22,21 +22,27 @@ class UserController{
             $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $password1 = filter_input(INPUT_POST, "password1", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
-            // $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             
             if($email && $username && $password && $password1){
-                if($password == $password1){
-// var_dump($passwordHash);die;
+
+                //Si les mots de passe ne sont pas identitques
+                if($password !== $password1){
+                    echo "Failed";
+                    exit;
+                } 
+
+                //S'ils le sont, on hache le mot de passe
+                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                    
+                //Et on ajoute l'utilisateur
                 $requete=$pdo->prepare("INSERT INTO utilisateur (email, username, password)
-                VALUES (:email, :username, :password");
+                                    VALUES (:email, :username, :password)");
                 $requete->execute([
                     "email"=>$email,
                     "username"=>$username,
-                    "password"=>$password
+                    "password"=>$passwordHash,
                 ]);
-            }
-            // echo "Connected";
-            // header("Location:index.php?action=listFilms");
+                // var_dump($passwordHash);die;         
             }
         } require("view/User/viewRegister.php");
     }

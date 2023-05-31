@@ -24,7 +24,11 @@ ob_start();
         <label for="password1">Password again: </label>
         <input type="password" name="password1">
     </div>
-    <div class="details-film-button">
+    <!-- <div class="form-input">
+        <label for="terms">I accept terms and conditions</label>
+        <input type="checkbox"name="terms">
+    </div> -->
+        <div class="details-film-button">
         <input type="submit" name="submitRegister">
     </div>
 </div>

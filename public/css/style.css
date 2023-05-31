@@ -386,3 +386,8 @@ nav{
     font-size: 20px;
 }
 
+/* ----------- L'authentification ----------------------------------------- */
+.user-choice{
+    display: flex;
+    flex-direction: column;
+}
