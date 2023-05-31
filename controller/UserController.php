@@ -62,6 +62,7 @@ class UserController{
                 if($utilisateur && password_verify($password, $utilisateur['password'])){
                     // Connexion réussie
                     echo "Login successful!";
+                    session_start(); //Identifiants OK donc on peut "ouvrir" une session
                     header("Location:index.php?action=userSession");
                     exit;
                 } else {
