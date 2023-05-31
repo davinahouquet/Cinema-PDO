@@ -75,5 +75,6 @@ if(isset($_GET["action"])){
         case "user" : $ctrlUser->user(); break;
         case "register" : $ctrlUser->register(); break;
         case "login" : $ctrlUser->login(); break;
+        case "userSession" : $ctrlUser->userSession(); break;
     }
 }

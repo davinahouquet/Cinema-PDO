@@ -62,6 +62,7 @@ class UserController{
                 if($utilisateur && password_verify($password, $utilisateur['password'])){
                     // Connexion réussie
                     echo "Login successful!";
+                    header("Location:index.php?action=userSession");
                     exit;
                 } else {
                     // Identifiants invalides
@@ -71,6 +72,10 @@ class UserController{
         }
         
         require("view/User/viewLogin.php");
+    }
+
+    public function userSession(){
+        require("view/User/viewUserSession.php");
     }
 }
 

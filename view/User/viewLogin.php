@@ -24,7 +24,7 @@ ob_start();
 </form>
 </div>
 
-<p>You don't have an account? Don't worry, <a href="#">click here</a> to sign up</p>
+<p>You don't have an account? Don't worry, <a href="index.php?action=register">click here</a> to sign up</p>
 <?php
 $titre = "Login";
 $contenu = ob_get_clean();
