@@ -396,13 +396,13 @@ nav{
     flex-direction: column;
 }
 
-/* Contient films favoris et to watch later */
+/* Le menu de droite (contient fovris/watch later...) */
 .user-session{
-    width: 250px;
+    width: 300px;
     height: auto;
     text-align: left;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
     background: linear-gradient(to left top,#892F2C, #081530);
     border-radius: 10px;
     box-shadow: 20px 25px 15px rgb(17, 17, 17);
@@ -414,4 +414,16 @@ nav{
 .a-session{
     margin: 15px;
     padding: 15px;
+}
+
+/* L'icône utilisateur */
+.user-img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* user title in right menu*/
+.h2-user{
+    padding: 10px;
 }

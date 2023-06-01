@@ -62,7 +62,8 @@ class UserController{
                 if($utilisateur && password_verify($password, $utilisateur['password'])){
                     // Connexion réussie
                     echo "Login successful!";
-                    session_start(); //Identifiants OK donc on peut "ouvrir" une session
+                    $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur']; // Stockage de l'id_utilisateur dans la session
+                    $_SESSION['username'] = $utilisateur['username']; // Stockage du nom d'utilisateur dans la session
                     header("Location:index.php?action=userSession");
                     exit;
                 } else {
@@ -75,8 +76,38 @@ class UserController{
         require("view/User/viewLogin.php");
     }
 
+    // Aller sur la page de l'utilisateur
     public function userSession(){
-        require("view/User/viewUserSession.php");
+        // Faire un if connecté = aller à la page viewuserSession SINON aller à la page userChoice
+        // if($_SESSION['id_utilisateur']){
+            require("view/User/viewUserSession.php");
+        // } else {
+        //     header()
+        // }
+    }
+
+    // Supprimer le compte utilisateur
+    public function deleteAccount($id_utilisateur){
+
+        $pdo = Connect::seConnecter();
+    
+        if(isset($_POST['deleteAccount'])){
+            // Supprimer l'utilisateur de la table utilisateur
+            $requete = $pdo->prepare("DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur");
+            $requete->execute(["id_utilisateur" => $id_utilisateur]);
+
+            echo "Account deleted";
+            header("Location: index.php?action=user");
+        }
+    
+    }
+
+    // Se déconnecter
+    public function logout($id_utilisateur){
+        unset($_SESSION['id_utilisateur']);
+        header("Location: index.php?action=user");
+        exit();
+// Message vous avez été déconnecté
     }
 }
 

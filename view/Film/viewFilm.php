@@ -29,7 +29,7 @@ ob_start();
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><h3 class="h3-film"><?= $film["titre"] ?></h3></a></td>
+                        <td><a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>"><h3 class="h3-film"><?= $film["titre"] ?>  <i class='fa-regular fa-heart'></i></h3></a></td>
                     </tr>
                 </tbody>
             </table>

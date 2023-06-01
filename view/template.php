@@ -44,10 +44,11 @@
                 </li>
             </ul>
 
+            <!-- A modifier !!!  -->
             <div class="user-img">
+                <a href="index.php?action=userSession"><p><?=$_SESSION["username"]?></p></a>
                 <a href="index.php?action=user"><img src="public/img/profile-user.png"></a>
             </div>
-
         </nav>
     </section>
 
