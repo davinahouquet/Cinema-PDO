@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 //On "use" les controller
 use Controller\CinemaController;
@@ -27,6 +26,8 @@ $ctrlUser = new UserController();
 $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 $id_utilisateur = (isset($_SESSION['id_utilisateur'])) ? : null;
 if(isset($_GET["action"])){ 
+    
+    session_start();
     
     switch ($_GET["action"]){
 
@@ -77,7 +78,7 @@ if(isset($_GET["action"])){
         case "user" : $ctrlUser->user(); break;
         case "register" : $ctrlUser->register(); break;
         case "login" : $ctrlUser->login(); break;
-        case "userSession" : $ctrlUser->userSession(); break;
+        case "userSession" : $ctrlUser->userSession($id_utilisateur); break;
         case "deleteAccount" : $ctrlUser->deleteAccount($id_utilisateur);break;
         case "logout" : $ctrlUser->logout($id_utilisateur); break;
     }

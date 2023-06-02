@@ -77,13 +77,21 @@ class UserController{
     }
 
     // Aller sur la page de l'utilisateur
-    public function userSession(){
+    public function userSession($id_utilisateur){
         // Faire un if connecté = aller à la page viewuserSession SINON aller à la page userChoice
         // if($_SESSION['id_utilisateur']){
-            require("view/User/viewUserSession.php");
+
+            // Afficher le nom d'utilisateur
+            // if(isset($_SESSION['id_utilisateur'])){
+            //     echo $_SESSION['username'];
+            // } else {
+            //     echo "Please, log in te access informations";
+            // }
+            // require("view/User/viewUserSession.php");
         // } else {
         //     header()
         // }
+        require("view/User/viewUserSession.php");
     }
 
     // Supprimer le compte utilisateur
@@ -91,6 +99,8 @@ class UserController{
 
         $pdo = Connect::seConnecter();
     
+
+        
         if(isset($_POST['deleteAccount'])){
             // Supprimer l'utilisateur de la table utilisateur
             $requete = $pdo->prepare("DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur");
@@ -103,12 +113,15 @@ class UserController{
     }
 
     // Se déconnecter
-    public function logout($id_utilisateur){
+    public function logout(){
         unset($_SESSION['id_utilisateur']);
+        unset($_SESSION['username']);
+        session_unset();
+        echo "You had been disconnected";
         header("Location: index.php?action=user");
         exit();
-// Message vous avez été déconnecté
     }
+
 }
 
 ?>
