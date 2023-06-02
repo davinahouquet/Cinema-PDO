@@ -76,46 +76,38 @@ class UserController{
         require("view/User/viewLogin.php");
     }
 
-    // Aller sur la page de l'utilisateur
+    // Aller sur la page de l'utilisateur, pour userSession
     public function userSession($id_utilisateur){
-        // Faire un if connecté = aller à la page viewuserSession SINON aller à la page userChoice
-        // if($_SESSION['id_utilisateur']){
-
-            // Afficher le nom d'utilisateur
-            // if(isset($_SESSION['id_utilisateur'])){
-            //     echo $_SESSION['username'];
-            // } else {
-            //     echo "Please, log in te access informations";
-            // }
-            // require("view/User/viewUserSession.php");
-        // } else {
-        //     header()
-        // }
+        
         require("view/User/viewUserSession.php");
     }
 
     // Supprimer le compte utilisateur
     public function deleteAccount($id_utilisateur){
 
-        $pdo = Connect::seConnecter();
-    
-
-        
-        if(isset($_POST['deleteAccount'])){
+            $pdo = Connect::seConnecter();
             // Supprimer l'utilisateur de la table utilisateur
+            
             $requete = $pdo->prepare("DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur");
             $requete->execute(["id_utilisateur" => $id_utilisateur]);
-
+            
+            // if (ini_get("session.use_cookies")) {
+            //     $params = session_get_cookie_params();
+            //         setcookie(session_name(), '', time() - 42000,
+            //     $params["path"], $params["domain"],
+            // $params["secure"], $params["httponly"]);
+            // }
+            session_destroy(); //détruit toutes les données associées à la session courante.
             echo "Account deleted";
             header("Location: index.php?action=user");
-        }
-    
+        
+        require("view/User/viewUserSession.php");
     }
 
     // Se déconnecter
     public function logout(){
-        unset($_SESSION['id_utilisateur']);
-        unset($_SESSION['username']);
+        unset($_SESSION["id_utilisateur"]);
+        unset($_SESSION["username"]);
         session_unset();
         echo "You had been disconnected";
         header("Location: index.php?action=user");
