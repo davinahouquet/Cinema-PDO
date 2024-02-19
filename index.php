@@ -10,7 +10,7 @@ use Controller\UserController;
 
 //On autocharge les classes du projet
 spl_autoload_register(function($class_name){
-    include $class_name . '.php';
+    require str_replace("\\", DIRECTORY_SEPARATOR, $class_name) . '.php';
 }); 
 
 //On instancie les controller
@@ -83,4 +83,7 @@ if(isset($_GET["action"])){
         case "logout" : $ctrlUser->logout($id_utilisateur); break;
     }
 
+}
+else {
+    $ctrlCinema->landingPage(); 
 }
